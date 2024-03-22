@@ -27,8 +27,7 @@ import CheckboxCustom from "@/components/Checkbox";
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
-// test
-//dfgdfgdf
+
 const Page = () => {
   const [playing, setPlaying] = useState(false);
 
