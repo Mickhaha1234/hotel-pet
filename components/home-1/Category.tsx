@@ -18,8 +18,7 @@ const Category = () => {
           <SubHeadingBtn text="Category" classes="bg-[var(--primary-light)]" />
           <h2 className="h2 mt-3">Choose Our Category</h2>
           <p className="text-neutral-600 pt-5 pb-8 lg:pb-14">
-            Real estate can be bought, sold, leased, or rented, and can be a
-            valuable investment opportunity. The value of real estate can be...
+           คุณสามารถเลือกสถานที่ที่คุณต้องการได้
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-6">

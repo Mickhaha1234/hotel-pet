@@ -4,82 +4,82 @@ export const menus = [
     title: "Home",
     submenu: [
       {
-        title: "Real Estate",
-        url: "/",
-      },
-      {
-        title: "Property Listing",
-        url: "/home-2",
-      },
-      {
-        title: "Car Rental",
-        url: "/home-3",
-      },
-      {
-        title: "Hotel Booking",
-        url: "/home-4",
-      },
-      {
-        title: "Tour Booking",
-        url: "/home-5",
-      },
-      {
-        title: "Flight Booking",
-        url: "/home-6",
-      },
+        title: "Hotel",
+        url: "/home-1",
+      }
+      // {
+      //   title: "Property Listing",
+      //   url: "/home-2",
+      // },
+      // {
+      //   title: "Car Rental",
+      //   url: "/home-3",
+      // },
+      // {
+      //   title: "Hotel Booking",
+      //   url: "/home-4",
+      // },
+      // {
+      //   title: "Tour Booking",
+      //   url: "/home-5",
+      // },
+      // {
+      //   title: "Flight Booking",
+      //   url: "/home-6",
+      // },
     ],
   },
   {
-    title: "Listings",
+    title: "Hotel",
     submenu: [
       {
-        title: "property",
+        title: "Booking",
         submenu: [
-          {
-            title: "Property List",
-            url: "/property-list",
-          },
-          {
-            title: "Property Grid",
-            url: "/property-grid",
-          },
-          {
-            title: "Property Map",
-            url: "/property-map",
-          },
-          {
-            title: "Add Property",
-            url: "/add-property",
-          },
-          {
-            title: "Property Details 1",
-            url: "/property-details-1",
-          },
-          {
-            title: "Property Details 2",
-            url: "/property-details-2",
-          },
+          // {
+          //   title: "Property List",
+          //   url: "/property-list",
+          // },
+          // {
+          //   title: "Property Grid",
+          //   url: "/property-grid",
+          // },
+          // {
+          //   title: "Property Map",
+          //   url: "/property-map",
+          // },
+          // {
+          //   title: "Add Property",
+          //   url: "/add-property",
+          // },
+          // {
+          //   title: "Property Details 1",
+          //   url: "/property-details-1",
+          // },
+          // {
+          //   title: "Property Details 2",
+          //   url: "/property-details-2",
+          // },
         ],
       },
       {
-        title: "Cab",
+        title: "Cafe",
         submenu: [
-          {
-            title: "Cab Listing",
-            url: "/cab-listing",
-          },
-          {
-            title: "Cab Listing Grid",
-            url: "/cab-listing-grid",
-          },
-          {
-            title: "Cab Listing Map",
-            url: "/cab-listing-map",
-          },
-          {
-            title: "Cab Listing Details",
-            url: "/cab-listing-details",
-          },
+          // {
+          //   title: "Cab Listing",
+          //   url: "/cab-listing",
+          // },
+          // {
+          //   title: "Cab Listing Grid",
+          //   url: "/cab-listing-grid",
+          // },
+          // {
+          //   title: "Cab Listing Map",
+          //   url: "/cab-listing-map",
+          // },
+          // {
+          //   title: "Cab Listing Details",
+          //   url: "/cab-listing-details",
+          // },
         ],
       },
       {
@@ -144,7 +144,7 @@ export const menus = [
     ],
   },
   {
-    title: "Pages",
+    title: "Cafe",
     submenu: [
       {
         title: "Agent",
@@ -224,7 +224,7 @@ export const menus = [
       },
       { title: "Faq", url: "/faq" },
       { title: "Contact Us", url: "/contact" },
-      { title: "Sign in", url: "/sign-in" },
+      { title: "Sign innn", url: "/sign-in" },
       { title: "Sign up", url: "/signup" },
       { title: "Error", url: "/error" },
     ],
