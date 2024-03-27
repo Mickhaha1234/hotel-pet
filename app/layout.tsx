@@ -2,6 +2,9 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import "@/public/styles/styles.scss";
 import "@/public/styles/line-awesome.min.css";
+import Providers from "./providers";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -9,16 +12,18 @@ export const metadata = {
   description: "A nextjs template for online booking system",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions)
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-[var(--bg-1)] text-[var(--neutral-700)]`}>
-        {children}
+        className={`${inter.className} bg-[var(--bg-1)] text-[var(--neutral-700)]`}
+      >
+        <Providers session={session}>{children}</Providers>
       </body>
     </html>
   );
