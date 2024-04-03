@@ -5,7 +5,7 @@ export const menus = [
     submenu: [
       {
         title: "Hotel",
-        url: "/home-1",
+        url: "/home-2",
       }
       // {
       //   title: "Property Listing",
@@ -34,11 +34,12 @@ export const menus = [
     submenu: [
       {
         title: "Booking",
+        url: "/property-list",
         submenu: [
-          // {
-          //   title: "Property List",
-          //   url: "/property-list",
-          // },
+          {
+            title: "Property List",
+            url: "/property-list",
+          },
           // {
           //   title: "Property Grid",
           //   url: "/property-grid",

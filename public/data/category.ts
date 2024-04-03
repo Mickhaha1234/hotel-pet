@@ -1,52 +1,63 @@
 export const categoryData = [
+
     {
         id: 1,
         color: 'blue',
         title: 'Hotel',
-        desc: 'An apartment is a self-contained housing unit that',
-        icon: "las la-city"
+        url: "/home-2",
+        desc: 'แนะนำโรงแรมที่สามารถพาสัตว์เลี้ยงของคุณเข้าพักได้',
+        icon: "las la-city",
+        // title: "Home",
+        // submenu: [
+        //     {
+        //         title: "Hotel",
+        //         url: "/home-2",
+        //     }
+        // ],
     },
+
+
     {
         id: 2,
         color: 'green',
         title: 'restaurants',
-        desc: 'A house is a standalone building that is designed for',
-        icon: 'las la-home'
+        desc: 'แนะนำร้านอาหารที่สามารถพาสัตว์เลี้ยงเข้าไปใช้บริการได้',
+        icon: 'las la-concierge-bell'
     },
     {
         id: 3,
         color: 'brown',
         title: 'Cafe',
-        desc: 'A family house is a type of residential building that is',
-        icon: 'las la-hotel'
+        desc: 'แนะนำคาเฟที่สามารถพาสัตว์เลี้ยงเข้าไปใช้บริการได้',
+        icon: 'las la-coffee'
     },
     {
         id: 4,
         color: 'blue',
-        title: 'Clenic',
-        desc: 'Residential refers to buildings or areas that are designed',
-        icon: 'las la-building'
+        title: 'Clenic,',
+        desc: 'แสดงคลีนิคโรงพยาบาลสัตว์เลี้ยงในระแวกใกล้เคียง',
+        icon: 'las la-hospital-alt'
     },
     {
         id: 5,
         color: 'blue',
         title: 'Hospital',
-        desc: 'There is no such thing as an "industrial home". Industrial',
-        icon: 'las la-industry'
+        desc: 'แสดงคลีนิคโรงพยาบาลสัตว์เลี้ยงในระแวกใกล้เคียง',
+        icon: 'las la-hospital-alt'
     },
     {
         id: 6,
         color: 'brown',
         title: 'Tourist',
-        desc: 'Commercial refers to activities, buildings, or areas',
-        icon: 'las la-store'
+        desc: 'แสดงสถานที่ท่องเที่ยวในระแวกใกล้เคียง',
+        icon: 'las la-map-marked-alt'
     },
     {
         id: 7,
         color: 'green',
         title: 'SoS',
-        desc: 'A villa is a type of large, luxurious house that is typically',
-        icon: 'las la-landmark'
+        desc: 'SoS ฉุกเฉินสำหรับเรียกรถพยาบาล',
+        icon: 'las la-ambulance'
     },
 ]
 
