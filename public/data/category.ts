@@ -1,3 +1,4 @@
+import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 export const categoryData = [
 
     {

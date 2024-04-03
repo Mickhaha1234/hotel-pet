@@ -40,10 +40,10 @@ export const menus = [
             title: "Property List",
             url: "/property-list",
           },
-          // {
-          //   title: "Property Grid",
-          //   url: "/property-grid",
-          // },
+          {
+            title: "Property Grid",
+            url: "/property-grid",
+          },
           // {
           //   title: "Property Map",
           //   url: "/property-map",
