@@ -9,7 +9,7 @@ export const featuredItems = {
             bed: 4,
             bath: 1,
             area: 732,
-            price: '7,255',
+            price: '25,976',
             favourite: false,
             popular: false,
             img: ['/img/Marasca Khao Yai, Khao Yai 1.jpeg', '/img/Marasca Khao Yai, Khao Yai 2.jpeg', '/img/Marasca Khao Yai, Khao Yai 3.jpeg', ]

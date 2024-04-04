@@ -23,7 +23,7 @@ const page = () => {
         <Hero />
         <Category />
         <Property />
-        <HowItWork />
+        {/* <HowItWork /> */}
         <DiscoverLocation />
         <MobileApp />
         <Explore />

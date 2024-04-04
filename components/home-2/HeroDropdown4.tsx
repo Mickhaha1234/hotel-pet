@@ -13,10 +13,11 @@ export default function HeroDropdown4() {
         <div className="w-full py-1 flex items-center gap-2">
           <span className="flex items-center gap-1">
             <CardIcon />
-            Price
+            Size 
           </span>
+         
           <span className="absolute top-[-14px] bg-white rounded-2xl py-1 px-5 right-4 shadow text-primary text-xs">
-            ${value}
+          {value}kg
           </span>
           <Slider
             handleStyle={{

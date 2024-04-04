@@ -24,9 +24,9 @@ const Benefit = () => {
               <p className="mt-4 text-xl">
                 <span className="text-primary">
                   {" "}
-                  99.5% Customer Satisfaction{" "}
+                  80.7% คือผู้เลี้ยงสัตว์เลี้ยงสถานะโสด และ 19.3% คือผู้เลี้ยงสัตว์เลี้ยงสถานะสมรส {" "}
                 </span>{" "}
-                based on 23,000+ reviews and 25,000+ Complete Projects.
+                {/* based on 23,000+ reviews and 25,000+ Complete Projects. */}
               </p>
             </div>
           </div>
@@ -38,11 +38,11 @@ const Benefit = () => {
                 classes="bg-[var(--primary-light)]"
               />
               <h2 className="h2 mt-4 leading-snug mb-5">
-                Explore the city of Benefit Happenings
+              สิทธิประโยชน์ที่คุณจะได้รับจาก Travel Tails
               </h2>
               <p className="text-neutral-600">
-                Real estate can be bought, sold, leased, or rented, and can be a
-                valuable investment opportunity. The value of real estate can be
+                {/* Real estate can be bought, sold, leased, or rented, and can be a
+                valuable investment opportunity. The value of real estate can be */}
               </p>
               <div className="grid grid-cols-12 gap-6 mt-7 lg:mt-10">
                 <div className="col-span-12 md:col-span-6 p-6 rounded-xl bg-[var(--bg-2)] flex gap-5">
@@ -55,9 +55,9 @@ const Benefit = () => {
                   />
                   <div>
                     <h4 className="text-xl font-semibold mb-2">
-                      Best Price Guarantee
+                      ได้ที่พักคุ้มค่ากับราคามากที่สุด
                     </h4>
-                    <p>Best Price Guarantee is a policy offered</p>
+                    <p>คุณจะได้รับที่พักที่ดีที่สุด</p>
                   </div>
                 </div>
                 <div className="col-span-12 md:col-span-6 p-6 rounded-xl bg-[var(--bg-2)] flex gap-5">
@@ -70,9 +70,9 @@ const Benefit = () => {
                   />
                   <div>
                     <h4 className="text-xl font-semibold mb-2">
-                      Reach millions user
+                     ได้รับการตรวจสอบจาก SHA 
                     </h4>
-                    <p>It is possible that the platform allows</p>
+                    {/* <p>It is possible that the platform allows</p> */}
                   </div>
                 </div>
                 <div className="col-span-12 md:col-span-6 p-6 rounded-xl bg-[var(--bg-2)] flex gap-5">
@@ -85,9 +85,9 @@ const Benefit = () => {
                   />
                   <div>
                     <h4 className="text-xl font-semibold mb-2">
-                      Easy & Quick Booking
+                    สามารถทำการจองได้ง่ายและรวดเร็ว
                     </h4>
-                    <p>The goal of Easy & Quick Booking is to</p>
+                    {/* <p>The goal of Easy & Quick Booking is to</p> */}
                   </div>
                 </div>
                 <div className="col-span-12 md:col-span-6 p-6 rounded-xl bg-[var(--bg-2)] flex gap-5">
@@ -100,9 +100,9 @@ const Benefit = () => {
                   />
                   <div>
                     <h4 className="text-xl font-semibold mb-2">
-                      Customer Care 24/7
+                      สามารถติดต่อฝ่ายบริการลูกค้าได้ 24 ชั่วโมง
                     </h4>
-                    <p>24/7 Customer Care facility available</p>
+                    {/* <p>24/7 Customer Care facility available</p> */}
                   </div>
                 </div>
               </div>

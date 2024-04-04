@@ -30,10 +30,9 @@ const DiscoverLocation = () => {
             text="Discover Our Location"
             classes="bg-[var(--primary-light)]"
           />
-          <h2 className="h2 mt-3 ">Best Property Location</h2>
+          <h2 className="h2 mt-3 ">สถานที่ท่องเที่ยวที่ดีที่สุด<br />สำหรับคุณ</h2>
           <p className="text-neutral-600 pt-5 pb-8 lg:pb-14">
-            Real estate can be bought, sold, leased, or rented, and can be a
-            valuable investment opportunity. The value of real estate can be...
+            {/* สถานที่ท่องเที่ยวต่างๆ */}
           </p>
         </div>
       </div>

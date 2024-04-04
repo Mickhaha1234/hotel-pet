@@ -77,13 +77,12 @@ const Hero = () => {
         <div className="container">
           <div className="text-center relative z-30">
             <h1 className="text-[40px] lg:text-[56px] leading-[68px] text-[var(--neutral-700)] font-semibold">
-              Easy Way to Find a Perfect <br /> Property
+              ท่องเที่ยวอย่างปลอดภัย   <br />อุ่นใจเมื่อเข้าพักไปกับเรา Travel Tails
             </h1>
             <p className="text-xl mx-auto max-w-[600px] text-gray-500 mt-4 md:mt-9">
-              Explore vast property listings by category with our user-friendly
-              search. Find your perfect match!
+              คุณจะปลอดภัยและอุ่นใจเมื่อได้ใช้บริการจองห้องพักที่สามารถนำสัตว์เลี้ยงเข้าพักได้ไปกับเรา Travel Tails
             </p>
-            <div className="z-30 p-4 lg:p-5 rounded-xl shadow-lg bg-white flex items-center flex-wrap gap-3 relative max-w-[1060px] mx-auto mt-12">
+            {/* <div className="z-30 p-4 lg:p-5 rounded-xl shadow-lg bg-white flex items-center flex-wrap gap-3 relative max-w-[1060px] mx-auto mt-12">
               <HeroDropdown1 />
               <HeroDropdown2 />
               <HeroDropdown3 />
@@ -93,15 +92,15 @@ const Hero = () => {
                 className="py-[14px] px-6 w-full flex justify-center xl:w-auto text-white bg-primary rounded-full">
                 <SearchIcon />
               </Link>
-            </div>
+            </div> */}
             <div className="mx-auto mt-16">
               <button className="text-white bg-primary rounded-full p-4 mb-2">
-                <Link href="#">
+                {/* <Link href="#">
                   <DownArrow />
-                </Link>
+                </Link> */}
               </button>
               <br />
-              <span className="text-center">More Details</span>
+              {/* <span className="text-center">More Details</span> */}
             </div>
           </div>
         </div>

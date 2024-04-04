@@ -14,6 +14,7 @@ import Services from "@/components/home-1/Services";
 import StartListing from "@/components/home-1/StartListing";
 import Testimonial from "@/components/home-1/Testimonial";
 import MobileMenu from "@/components/MobileMenu";
+import DiscoverLocation from "@/components/home-2/DiscoverLocation";
 
 export default function Home() {
   return (
@@ -25,13 +26,14 @@ export default function Home() {
       <Category />
       <Property />
       <NewListing />
-      <Services />
-      <Calculate />
+      {/* <Services /> */}
+      {/* <Calculate /> */}
       <Benefit />
-      <Authors />
-      <Testimonial />
-      <StartListing />
-      <Faq />
+      {/* <Authors /> */}
+      {/* <Testimonial /> */}
+      {/* <StartListing /> */}
+      {/* <Faq /> */}
+      <DiscoverLocation />
       <Footer />
     </main>
   );

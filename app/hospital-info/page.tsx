@@ -1,4 +1,5 @@
 "use client";
+
 import Accordion from "@/components/Accordion";
 import CheckboxCustom from "@/components/Checkbox";
 import { ChevronDownIcon, PencilIcon } from "@heroicons/react/24/outline";
@@ -6,9 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChangeEvent, useRef, useState } from "react";
 
+import HeaderTop from "@/components/home-1/HeaderTophome1";
+
+
 const Page = () => {
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const [imageSrc, setImageSrc] = useState<string>("/img/team-1.jpg");
+  const [imageSrc, setImageSrc] = useState<string>("/img/hospital.png");
 
   const handleImageClick = () => {
     if (inputFileRef.current) {
@@ -34,7 +38,7 @@ const Page = () => {
         <Accordion
           buttonContent={(open) => (
             <div className="rounded-2xl flex justify-between items-center">
-              <h3 className="h3">Basic Infooo </h3>
+              <h3 className="h3">Hospital </h3>
               <ChevronDownIcon
                 className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                   open ? "rotate-180" : ""

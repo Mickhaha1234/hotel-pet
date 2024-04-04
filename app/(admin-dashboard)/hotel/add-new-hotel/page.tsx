@@ -347,3 +347,100 @@ const Page = () => {
 };
 
 export default Page;
+
+// import React, { useState } from 'react';
+// import { EyeIcon } from '@heroicons/react/24/outline';
+// import Link from 'next/link';
+// import { useClient } from 'next/amp';
+
+
+// interface FormData {
+//   title: string;
+//   salePrice: number;
+//   description: string;
+// }
+
+// const AddPropertyPage: React.FC = () => {
+//   const [formData, setFormData] = useState<FormData>({
+//     title: '',
+//     salePrice: 0,
+//     description: '',
+//   });
+
+//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+//     setFormData({
+//       ...formData,
+//       [e.target.name]: e.target.value,
+//     });
+//   };
+
+//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     try {
+//       const response = await fetch('/api/hotels', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(formData),
+//       });
+//       if (response.ok) {
+//         console.log('Hotel added successfully');
+//       } else {
+//         console.error('Failed to add hotel');
+//       }
+//     } catch (error) {
+//       console.error('Error:', error);
+//     }
+//   };
+
+//   return (
+//     <div className="bg-[var(--bg-2)]">
+//       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
+//         <h2 className="h2 text-white">Add New Hotel</h2>
+//         <Link href="/add-property" className="btn-primary">
+//           <EyeIcon className="w-5 h-5" /> View All Hotel
+//         </Link>
+//       </div>
+//       {/* Form */}
+//       <section className="grid z-[1] grid-cols-12 gap-4 mb-6 lg:gap-6 px-3 md:px-6 bg-[var(--bg-2)] relative after:absolute after:bg-[var(--dark)] after:w-full after:h-[60px] after:top-0 after:left-0 after:z-[-1] pb-10 xxl:pb-0">
+//         <div className="col-span-12 lg:col-span-6">
+//           <form onSubmit={handleSubmit} className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-2xl">
+//             <div className="border-t pt-4">
+//               <p className="mb-4 text-xl font-medium">Title:</p>
+//               <input
+//                 type="text"
+//                 name="title"
+//                 value={formData.title}
+//                 onChange={handleChange}
+//                 className="w-full border p-2 focus:outline-none rounded-md text-base"
+//                 placeholder="Write Title"
+//               />
+//               <p className="mt-6 mb-4 text-xl font-medium">Sale Price:</p>
+//               <input
+//                 type="number"
+//                 name="salePrice"
+//                 value={formData.salePrice}
+//                 onChange={handleChange}
+//                 className="w-full border p-2 focus:outline-none rounded-md text-base"
+//                 placeholder="Enter Sale Price"
+//               />
+//               <p className="mt-6 mb-4 text-xl font-medium">Description :</p>
+//               <textarea
+//                 name="description"
+//                 value={formData.description}
+//                 onChange={handleChange}
+//                 rows={5}
+//                 className="w-full border p-2 focus:outline-none rounded-md "
+//                 placeholder="Description.."
+//               ></textarea>
+//               <button type="submit" className="btn-primary mt-6">Submit</button>
+//             </div>
+//           </form>
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default AddPropertyPage;

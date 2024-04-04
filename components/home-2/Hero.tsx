@@ -13,7 +13,7 @@ const Hero = () => {
       <div className="container grid place-items-center py-20 lg:pb-[180px] lg:pt-[260px]">
         <div className="max-w-[856px] mx-auto z-10 relative px-3 xl:px-0">
           <h1 className="h1 text-white font-semibold mb-10 lg:mr-36">
-            Easy Way to Find a Perfect Property
+          ท่องเที่ยวอย่างปลอดภัย   <br />อุ่นใจเมื่อเข้าพักไปกับเรา Travel Tails
           </h1>
           <div className="flex flex-wrap gap-4 xl:gap-8">
             <div className="p-2 border border-white rounded-full flex gap-3">
@@ -22,22 +22,22 @@ const Hero = () => {
                 className={`btn py-3 text-white duration-500 font-semibold px-6 ${
                   active === "rent" && "bg-primary"
                 }`}>
-                Rent
+                Houre
               </button>
               <button
                 onClick={() => setActive("buy")}
                 className={`btn py-3 text-white duration-500 font-semibold px-6 ${
                   active === "buy" && "bg-primary"
                 }`}>
-                Buy
+               Day
               </button>
-              <button
+              {/* <button
                 onClick={() => setActive("sell")}
                 className={`btn py-3 text-white duration-500 font-semibold px-6 ${
                   active === "sell" && "bg-primary"
                 }`}>
                 Sell
-              </button>
+              </button> */}
             </div>
             <div className="max-w-max">
               <Link

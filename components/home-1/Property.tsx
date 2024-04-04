@@ -22,10 +22,9 @@ const Property = () => {
       <div className="container">
         <div className="max-w-[570px] mx-auto flex flex-col items-center text-center px-3">
           <SubHeadingBtn text="Properties" classes="bg-white" />
-          <h2 className="h2 mt-3 ">Featured Listed Property</h2>
+          <h2 className="h2 mt-3 ">ที่พักที่ดีที่สุดสำหรับคุณ  <br />และสัตว์เลี้ยงเเสนรัก</h2>
           <p className="text-neutral-600 pt-5 pb-8 lg:pb-14">
-            Real estate can be bought, sold, leased, or rented, and can be a
-            valuable investment opportunity. The value of real estate can be...
+          บริการแนะนำที่พัก สถานที่ท่องเที่ยว ร้านอาหารและคาเฟ หรือบริการฉุกเฉินทางการแพทย์สำหรับสัตว์เลี้ยงของคุณ
           </p>
         </div>
         <div className="">
