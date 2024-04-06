@@ -2,18 +2,19 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  firstName           String?
-  lastName           String?
+  id             Int       @id @default(autoincrement())
+  firstName      String?
+  lastName       String?
   email          String?   @unique
   emailVerified  DateTime?
   image          String?
@@ -25,7 +26,7 @@ model User {
 }
 
 model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  id                Int     @id @default(autoincrement())
   type              String
   provider          String
   providerAccountId String
@@ -37,8 +38,49 @@ model Account {
   id_token          String?
   session_state     String?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String @db.ObjectId
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
 
   @@unique([provider, providerAccountId])
+}
+
+model MasterCategory {
+  categoryId   Int    @id @default(autoincrement())
+  categoryName String
+}
+
+model MasterFeature {
+  featureId   Int    @id @default(autoincrement())
+  featureName String
+}
+
+model Hotels {
+  hotelId     Int      @id @default(autoincrement())
+  title       String?
+  price       Decimal? @db.Decimal(65, 2)
+  description String?
+  tagLine     String?
+  tag         String?
+  beds        Int?
+  bathRooms   Int?
+  garages     Int?
+  person      Int?
+  area        Decimal? @db.Decimal(65, 2)
+  propertyId  Int?
+  type        String?
+  bedRooms    Int?
+  parking     Int?
+  dimensions  String?
+  yearBuild   Int?
+  image       String?
+  videoLink   String?
+  address     String?
+  zipCode     String?
+  Phone       String?
+  fax         String?
+  email       String?
+  website     String?
+
+  categoryId Int?
+  features   String?
 }
