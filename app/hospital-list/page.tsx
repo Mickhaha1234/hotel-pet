@@ -38,7 +38,7 @@ const Page = () => {
         <Accordion
           buttonContent={(open) => (
             <div className="rounded-2xl flex justify-between items-center">
-              <h3 className="h3">Hospita-info </h3>
+              <h3 className="h3">Hospital-list </h3>
               <ChevronDownIcon
                 className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                   open ? "rotate-180" : ""
