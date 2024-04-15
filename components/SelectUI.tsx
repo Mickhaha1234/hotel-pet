@@ -9,15 +9,14 @@ type OptionTypes = {
   options: OptionType[];
 };
 
-export default function SelectUI({ options }: OptionTypes) {
-  const [selected, setSelected] = useState(options[0]);
+export default function SelectUI({ selected, setSelected, options }: any) {
 
   return (
     <div className="text-left w-full">
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative">
           <Listbox.Button className="relative w-full cursor-default py-3 px-3 lg:px-6 flex gap-3 items-center sm:text-sm bg-white border rounded-[5px]">
-            <span className="block">{selected.name}</span>
+            <span className="block">{selected?.name}</span>
             <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
               <ChevronDownIcon />
             </span>
@@ -28,7 +27,7 @@ export default function SelectUI({ options }: OptionTypes) {
             leaveFrom="opacity-200"
             leaveTo="opacity-0">
             <Listbox.Options className="z-40 absolute mt-1 max-h-60 w-full overflow-auto rounded-[5px] bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-              {options.map((person, personIdx) => (
+              {options.map((person: any, personIdx: any) => (
                 <Listbox.Option
                   key={personIdx}
                   className={({ active }) =>
@@ -43,7 +42,7 @@ export default function SelectUI({ options }: OptionTypes) {
                         className={`truncate flex gap-3 items-center text-base ${
                           selected ? "font-medium" : "font-normal"
                         }`}>
-                        {person.name}
+                        {person?.name}
                       </span>
                     </>
                   )}

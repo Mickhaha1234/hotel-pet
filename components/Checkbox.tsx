@@ -2,8 +2,9 @@ import React, { ReactNode } from "react";
 interface CheckboxCustomProps {
   label: string;
   img?: ReactNode;
+  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
 }
-const CheckboxCustom: React.FC<CheckboxCustomProps> = ({ label, img }) => {
+const CheckboxCustom: React.FC<CheckboxCustomProps> = ({ label, img, onChange }) => {
   return (
     <div className="flex items-center">
       <input
@@ -12,6 +13,7 @@ const CheckboxCustom: React.FC<CheckboxCustomProps> = ({ label, img }) => {
         name="A3-confirmation"
         value={label}
         className="opacity-0 absolute h-8 w-8"
+        onChange={onChange}
       />
       <div className="bg-white border border-gray-400 rounded-full w-5 h-5 flex shrink-0 justify-center items-center mr-2 focus-within:border-[var(--primary)]">
         <svg
