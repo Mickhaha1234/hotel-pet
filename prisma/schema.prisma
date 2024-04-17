@@ -84,3 +84,4 @@ model Hotels {
   categoryId Int?
   features   String?
 }
+

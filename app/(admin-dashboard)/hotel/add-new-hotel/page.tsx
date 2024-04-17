@@ -72,6 +72,7 @@ const Page = () => {
   const [fax, setfax] = useState("");
   const [email, setemail] = useState("");
   const [website, setwebsite] = useState("");
+  const [image, setimage] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -87,6 +88,11 @@ const Page = () => {
       selectedGarages: Number(selectedgarages.name),
       selectedPerson: Number(selectedperson.name),
       title: title,
+      tag: selectedtag.name,
+      beds: Number(selectedbeds.name),
+      bathRooms: Number(selectedbathRooms.name),
+      garages: Number(selectedgarages.name),
+      person: Number(selectedperson.name),
       price: Number(price),
       description: description,
       tagLine: tagLine,
@@ -101,10 +107,11 @@ const Page = () => {
       address: address,
       features: amenitiesString,
       zipCode: zipCode,
-      phone: Phone,
+      Phone: Phone,
       fax: fax,
       email: email,
       website: website,
+      image: image,
     };
 
     console.log(payload);
@@ -347,40 +354,14 @@ const Page = () => {
               initialOpen={true}
             >
               <div className="pt-6">
-                <div className="flex items-center justify-center border-dashed rounded-2xl w-full">
-                  <label
-                    htmlFor="dropzone-file"
-                    className="flex flex-col items-center justify-center w-full cursor-pointer bg-[var(--bg-2)] rounded-2xl border border-dashed"
-                  >
-                    <span className="flex flex-col items-center justify-center py-12">
-                      <CloudArrowUpIcon className="w-[60px] h-[60px]" />
-                      <span className="h3 clr-neutral-500 text-center mt-4 mb-3">
-                        Drag & Drop
-                      </span>
-                      <span className="block text-center mb-6 clr-neutral-500">
-                        OR
-                      </span>
-                      <span className="inline-block py-3 px-6 rounded-full bg-[#354764] text-white mb-10">
-                        Select Files
-                      </span>
-                      <span className="flex items-center justify-center flex-wrap gap-5">
-                        <span className="flex items-center gap-2">
-                          <InformationCircleIcon className="w-5 h-5" />
-                          <span className="block mb-0 clr-neutral-500">
-                            Maximum allowed file size is 9.00 MB
-                          </span>
-                        </span>
-                        <span className="flex items-center gap-2">
-                          <InformationCircleIcon className="w-5 h-5" />
-                          <span className="block mb-0 clr-neutral-500">
-                            Maximum 10 files are allowed
-                          </span>
-                        </span>
-                      </span>
-                    </span>
-                    <input type="file" id="dropzone-file" className="hidden" />
-                  </label>
-                </div>
+                <p className="mt-6 mb-4 text-xl font-medium">Image Address :</p>
+                <input
+                  type="text"
+                  className="w-full border p-2 focus:outline-none rounded-md text-base"
+                  placeholder="Image link"
+                  value={image}
+                  onChange={(e) => setimage(e.target.value)}
+                />
                 <p className="mt-6 mb-4 text-xl font-medium">Video Link :</p>
                 <input
                   type="text"
