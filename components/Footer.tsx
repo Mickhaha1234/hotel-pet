@@ -13,9 +13,8 @@ const Footer = () => {
                 <Image src={logolight} alt="image" className="" />
               </Link>
               <p className="clr-neutral-30 mb-6">
-                Real estate can be bought, sold, leased, or rented, and can be a
-                valuable investment opportunity. The value of real estate can
-                be...
+              Traveltails เป็นแพลตฟรอมสำหรับการจองโรงแรมที่จะทำให้คุณประทับใจ เพราะ Traveltails 
+              ได้จัดหาที่พักสำหรับการพักผ่อนที่คุณจะพาสัตว์เลี้ยงเเสนรักของคุณเข้าพักกับคุณได้
               </p>
               <ul className="flex gap-3 flex-wrap">
                 <li>
@@ -102,7 +101,7 @@ const Footer = () => {
                   <div className="flex items-center gap-4">
                     <i className="las la-phone-volume bg-primary text-white text-xl p-2 rounded-full"></i>
                     <Link href="tel:3165550116" className="mb-0 clr-neutral-30">
-                      (316) 555-0116
+                      (+66) 0955048771
                     </Link>
                   </div>
                 </li>
@@ -112,7 +111,7 @@ const Footer = () => {
                     <Link
                       href="mailto:example@mail.com"
                       className="mb-0 clr-neutral-30">
-                      example@mail.com
+                      traveltailspetfriendy@gmail.com.com
                     </Link>
                   </div>
                 </li>
@@ -120,7 +119,7 @@ const Footer = () => {
                   <div className="flex items-center gap-4">
                     <i className="las la-map-marker-alt bg-[var(--tertiary)] text-[var(--neutral-700)] text-xl p-2 rounded-full"></i>
                     <p className="mb-0 clr-neutral-30">
-                      31 Brandy Way, Sutton, SM2 6SE
+                    18, 18 Debaratna Rd, Tambon Bang Chalong, Amphoe Bang Phli , Chang Wat Samut Prakan 10540.
                     </p>
                   </div>
                 </li>

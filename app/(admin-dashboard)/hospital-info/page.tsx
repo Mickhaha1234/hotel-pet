@@ -117,7 +117,7 @@ const Page = () => {
                     placeholder="Enter number"
                   />
                 </div>
-                <div className="col-span-12 lg:col-span-12">
+                {/* <div className="col-span-12 lg:col-span-12">
                   <label className="block mb-2 font-medium clr-neutral-500">
                     Gender :
                   </label>
@@ -153,7 +153,7 @@ const Page = () => {
                       </div>
                     </li>
                   </ul>
-                </div>
+                </div> */}
                 <div className="col-span-12">
                   <label className="block mb-2 font-medium clr-neutral-500">
                     BIO :
