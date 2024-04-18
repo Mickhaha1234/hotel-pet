@@ -84,4 +84,28 @@ model Hotels {
   categoryId Int?
   features   String?
 }
+model Restaurant {
+  restaurantId     Int      @id @default(autoincrement())
+  price       Decimal? @db.Decimal(65, 2)
+  description String?
+  image       String?
+  email       String?
+  website     String?
+  parking     Int?
+  title       String?
+  Phone       String?
+
+}
+model Cafe {
+  cafeId     Int      @id @default(autoincrement())
+  price       Decimal? @db.Decimal(65, 2)
+  description String?
+  image       String?
+  email       String?
+  website     String?
+  parking     Int?
+  title       String?
+  Phone       String?
+
+}
 

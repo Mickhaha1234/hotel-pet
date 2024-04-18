@@ -32,11 +32,11 @@ export const menus = [
     ],
   },
   {
-    title: "Resterong",
+    title: "Restaurant",
     submenu: [
       {
         title: "ร้านอาหารที่ใกล้คุณที่สุด",
-        url: "/resterong-list",
+        url: "/restaurant-list",
        
       },
     ],

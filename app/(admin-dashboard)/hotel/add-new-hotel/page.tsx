@@ -167,7 +167,7 @@ const Page = () => {
                   open ? "rounded-t-2xl" : "rounded-2xl"
                 } flex justify-between items-center p-4 md:p-6 lg:p-8 duration-500 bg-white`}
               >
-                <h3 className="h3">Hotel Content </h3>
+                <h3 className="h3">Hotel Information </h3>
                 <ChevronDownIcon
                   className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                     open ? "rotate-180" : ""
@@ -187,7 +187,7 @@ const Page = () => {
                   selected={selected}
                   setSelected={setSelected}
                 />
-                <p className="mt-6 mb-4 text-xl font-medium">Title:</p>
+                <p className="mt-6 mb-4 text-xl font-medium">ชื่อ:</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md text-base"

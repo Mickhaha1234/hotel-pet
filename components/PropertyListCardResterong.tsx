@@ -128,8 +128,8 @@ const PropertyListCard = ({ item }: any) => {
           <div className="px-3 sm:px-4 md:px-5 pb-5 pt-4">
             <div className="flex flex-wrap gap-3 justify-between items-center">
               <span className="text-primary text-xl font-medium">
-                {price}฿
-                <span className="text-base text-neutral-700">/Day</span>
+                ${price}
+                <span className="text-base text-neutral-700">/month</span>
               </span>
               <Link href="/property-details-1" className="btn-outline ">
                 Read More
