@@ -88,3 +88,7 @@ input:checked + div svg {
 .scrollbar-hide::-webkit-scrollbar{
 
 display: none;}
+
+/* nextjs-portal {
+    display: none;
+  } */

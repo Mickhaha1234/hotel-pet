@@ -4,9 +4,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { firstName, lastName, email, password } = body;
+  const { firstName, lastName, email, password, role } = body;
 
-  if (!firstName || !lastName || !email || !password) {
+  if (!firstName || !lastName || !email || !password || !role) {
     return new NextResponse("Missing Fields", { status: 400 });
   }
 
@@ -22,13 +22,14 @@ export async function POST(request: NextRequest) {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // insert User to mongoDB
+  // insert User to postgreSQL
   const user = await prisma.user.create({
     data: {
       firstName,
       lastName,
       email,
       hashedPassword,
+      role,
     },
   });
 

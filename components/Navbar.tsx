@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { menus } from "@/public/data/menu";
+import Cookies from "js-cookie";
 
 interface MenuItem {
   title: string | JSX.Element;
@@ -112,6 +113,13 @@ const Navbar: React.FC = () => {
     <ul className="flex flex-col lg:flex-row menus absolute left-0 lg:top-full bg-white lg:bg-transparent w-full lg:w-auto lg:static px-2 lg:px-0">
       {menus.map((menu, index) => {
         const depthLevel = 0;
+        if(menu.title === 'Dashboard'){
+          if(Cookies.get("role") === 'admin'){
+            return <MenuItems items={menu} key={index} depthLevel={depthLevel} />;
+          } else {
+            return
+          }
+        }
         return <MenuItems items={menu} key={index} depthLevel={depthLevel} />;
       })}
     </ul>

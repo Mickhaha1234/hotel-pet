@@ -1,24 +1,16 @@
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 export const menus = [
-
-
   {
     title: "Home",
-    submenu: [
-      
-    ],
+    submenu: [],
   },
-
-  
-
   {
     title: "Hotel",
     submenu: [
       {
         title: "Booking",
         url: "/property-list",
-      }
-      
+      },
     ],
   },
   {
@@ -27,7 +19,6 @@ export const menus = [
       {
         title: "คาเฟ่ที่ใกล้คุณที่สุด",
         url: "/cafe-list",
-        
       },
     ],
   },
@@ -37,7 +28,6 @@ export const menus = [
       {
         title: "ร้านอาหารที่ใกล้คุณที่สุด",
         url: "/restaurant-list",
-       
       },
     ],
   },
@@ -59,22 +49,22 @@ export const menus = [
     ],
   },
   {
-       title: "Dashboard",
-         submenu: [
-         {
-            title: "User Dashboard",
-             url: "/personal-info",
-           },
-           {
-             title: "Vendor Dashboard",
-             url: "/vendor-dashboard",
-           },
-           {
-             title: "Admin Dashboard",
-             url: "/admin-dashboard",
-           },
-         ],
-       },
+    title: "Dashboard",
+    submenu: [
+      {
+        title: "User Dashboard",
+        url: "/personal-info",
+      },
+      {
+        title: "Vendor Dashboard",
+        url: "/vendor-dashboard",
+      },
+      {
+        title: "Admin Dashboard",
+        url: "/admin-dashboard",
+      },
+    ],
+  },
   {
     // title: <i className="las la-ellipsis-h text-2xl flex items-center "></i>,
     title: <EllipsisHorizontalIcon className="w-7 h-7" />,
@@ -94,7 +84,6 @@ export const menus = [
     ],
   },
 ];
-
 
 // import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 // export const menus = [
@@ -328,5 +317,3 @@ export const menus = [
 //     ],
 //   },
 // ];
-
-

@@ -191,9 +191,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       <ul className="flex flex-wrap justify-center justify-content-lg-start justify-content-xl-center gap-4">
                         <li>
                           <Link
-                            href="property-grid"
+                            href="cafe-grid"
                             className={`link flex items-center gap-2 clr-neutral-500 hover:text-primary ${
-                              path === "/property-grid" && "text-primary"
+                              path === "/cafe-grid" && "text-primary"
                             }`}>
                             <Squares2X2Icon className="w-5 h-5" />
                             <span className="inline-block font-medium">
@@ -203,9 +203,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         </li>
                         <li>
                           <Link
-                            href="property-list"
+                            href="cafe-list"
                             className={`link flex items-center gap-2 clr-neutral-500 hover:text-primary ${
-                              path === "/property-list" && "text-primary"
+                              path === "/cafe-list" && "text-primary"
                             }`}>
                             <ListBulletIcon className="w-5 h-5" />
                             <span className="inline-block font-medium">
@@ -215,9 +215,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         </li>
                         <li>
                           <Link
-                            href="property-map"
+                            href="cafe-map"
                             className={`link flex items-center gap-2 clr-neutral-500 hover:text-primary ${
-                              path === "/property-map" && "text-primary"
+                              path === "/cafe-map" && "text-primary"
                             }`}>
                             <MapPinIcon className="w-5 h-5" />
                             <span className="inline-block font-medium">

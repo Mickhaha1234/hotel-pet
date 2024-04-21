@@ -15,6 +15,7 @@ model User {
   id             Int       @id @default(autoincrement())
   firstName      String?
   lastName       String?
+  role       String?
   email          String?   @unique
   emailVerified  DateTime?
   image          String?
@@ -30,6 +31,7 @@ model Account {
   type              String
   provider          String
   providerAccountId String
+  role       String?
   refresh_token     String?
   access_token      String?
   expires_at        Int?

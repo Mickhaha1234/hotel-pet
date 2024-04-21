@@ -5,17 +5,22 @@ export async function GET() {
   try {
     const Cafe = await prisma.cafe.findMany();
 
+    const transformedCafe = Cafe.map((v) => ({
+      ...v,
+      img: v.image ? [v.image] : ["/img/featured-img-1.jpg"],
+    }));
+
     return NextResponse.json(
       {
         message: "Ok",
-        data: Cafe,
+        data: transformedCafe,
       },
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
       {
-        message: "Failed to fetch Hotels",
+        message: "Failed to fetch Cafe",
         error,
       },
       {

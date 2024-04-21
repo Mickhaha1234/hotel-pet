@@ -1,8 +1,31 @@
+"use client";
+
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import Image from "next/image";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
+
 
 export default function ProfileDropdown() {
+  const router = useRouter();
+  const logOut = (e: any) => {
+    e.preventDefault();
+
+    Cookies.remove("id");
+    Cookies.remove("email");
+    Cookies.remove("firstName");
+    Cookies.remove("lastName");
+    Cookies.remove("role");
+
+    toast.success("Log out Completed");
+
+    router.push("/");
+
+
+  };
+
   return (
     <div className="text-left z-10">
       <Menu as="div" className="relative inline-block top-1 md:top-[2px]">
@@ -23,7 +46,8 @@ export default function ProfileDropdown() {
           enterTo="transform opacity-100 scale-100"
           leave="transition ease-in duration-75"
           leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95">
+          leaveTo="transform opacity-0 scale-95"
+        >
           <Menu.Items className="absolute left-[-80px] lg:right-0 lg:left-auto mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 p-3 focus:outline-none">
             <div className="px-1 py-1 ">
               <Menu.Item>
@@ -50,7 +74,8 @@ export default function ProfileDropdown() {
                   <button
                     className={`${
                       active ? "bg-gray-200 text-gray-800" : ""
-                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm mt-2`}>
+                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm mt-2`}
+                  >
                     <UserIcon />
                     My Account
                   </button>
@@ -61,7 +86,8 @@ export default function ProfileDropdown() {
                   <button
                     className={`${
                       active ? "bg-gray-200 text-gray-800" : ""
-                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm`}>
+                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
                     <CalenderIcon />
                     My Bookings
                   </button>
@@ -72,7 +98,8 @@ export default function ProfileDropdown() {
                   <button
                     className={`${
                       active ? "bg-gray-200 text-gray-800" : ""
-                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm mb-2 border-b border-dashed`}>
+                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm mb-2 border-b border-dashed`}
+                  >
                     <HeartIcon />
                     Wishlist
                   </button>
@@ -83,7 +110,8 @@ export default function ProfileDropdown() {
                   <button
                     className={`${
                       active ? "bg-gray-200 text-gray-800" : ""
-                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm mt-2`}>
+                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm mt-2`}
+                  >
                     <InfoIcon />
                     Help
                   </button>
@@ -92,9 +120,11 @@ export default function ProfileDropdown() {
               <Menu.Item>
                 {({ active }) => (
                   <button
+                    onClick={logOut}
                     className={`${
                       active ? "bg-gray-200 text-gray-800" : ""
-                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm`}>
+                    } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
                     <LogOutIcon />
                     Log out
                   </button>
@@ -104,6 +134,8 @@ export default function ProfileDropdown() {
           </Menu.Items>
         </Transition>
       </Menu>
+      <Toaster position="top-right" />
+
     </div>
   );
 }
@@ -115,7 +147,8 @@ const UserIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-5 h-5">
+      className="w-5 h-5"
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -132,7 +165,8 @@ const CalenderIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-5 h-5">
+      className="w-5 h-5"
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -149,7 +183,8 @@ const HeartIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-5 h-5">
+      className="w-5 h-5"
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -166,7 +201,8 @@ const InfoIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-5 h-5">
+      className="w-5 h-5"
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -183,7 +219,8 @@ const LogOutIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-5 h-5">
+      className="w-5 h-5"
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"

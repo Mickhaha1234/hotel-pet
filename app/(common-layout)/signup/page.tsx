@@ -1,7 +1,47 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import LoginImg from "@/public/img/login-img.png";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 const page = () => {
+  const [firstname, setfirstname] = useState("");
+  const [lastname, setlastname] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    const payload = {
+      firstName: firstname,
+      lastName: lastname,
+      email: email,
+      password: password,
+      role: "member",
+    };
+
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      toast.success("Register Completed");
+    } catch (error) {
+      toast.error("Can't Register");
+    }
+  };
+
   return (
     <div className="py-[30px] lg:py-[60px] bg-[var(--bg-1)] signup-section">
       <div className="container">
@@ -17,7 +57,8 @@ const page = () => {
                   <div className="col-span-12 md:col-span-6">
                     <label
                       htmlFor="first-name"
-                      className="text-base sm:text-lg md:text-xl font-normal sm:font-medium block mb-3">
+                      className="text-base sm:text-lg md:text-xl font-normal sm:font-medium block mb-3"
+                    >
                       First Name
                     </label>
                     <input
@@ -25,12 +66,15 @@ const page = () => {
                       className="w-full bg-[var(--bg-1)] border focus:outline-none rounded-full py-3 px-5"
                       placeholder="Enter First Name"
                       id="first-name"
+                      value={firstname}
+                      onChange={(e) => setfirstname(e.target.value)}
                     />
                   </div>
                   <div className="col-span-12 md:col-span-6">
                     <label
                       htmlFor="last-name"
-                      className="text-base sm:text-lg md:text-xl font-normal sm:font-medium block mb-3">
+                      className="text-base sm:text-lg md:text-xl font-normal sm:font-medium block mb-3"
+                    >
                       Last Name
                     </label>
                     <input
@@ -38,12 +82,15 @@ const page = () => {
                       className="w-full bg-[var(--bg-1)] border focus:outline-none rounded-full py-3 px-5"
                       placeholder="Enter Last Name"
                       id="last-name"
+                      value={lastname}
+                      onChange={(e) => setlastname(e.target.value)}
                     />
                   </div>
                   <div className="col-span-12">
                     <label
                       htmlFor="enter-email"
-                      className="text-base sm:text-lg md:text-xl font-normal sm:font-medium block mb-3">
+                      className="text-base sm:text-lg md:text-xl font-normal sm:font-medium block mb-3"
+                    >
                       Enter Your Email ID
                     </label>
                     <input
@@ -51,12 +98,15 @@ const page = () => {
                       className="w-full bg-[var(--bg-1)] border focus:outline-none rounded-full py-3 px-5"
                       placeholder="Enter Your Email"
                       id="enter-email"
+                      value={email}
+                      onChange={(e) => setemail(e.target.value)}
                     />
                   </div>
                   <div className="col-span-12">
                     <label
                       htmlFor="enter-password"
-                      className="text-base sm:text-lg md:text-xl font-normal sm:font-medium block mb-3">
+                      className="text-base sm:text-lg md:text-xl font-normal sm:font-medium block mb-3"
+                    >
                       Enter Your Password
                     </label>
                     <input
@@ -64,6 +114,8 @@ const page = () => {
                       className="w-full bg-[var(--bg-1)] border focus:outline-none rounded-full py-3 px-5"
                       placeholder="Enter Your Password"
                       id="enter-password"
+                      value={password}
+                      onChange={(e) => setpassword(e.target.value)}
                     />
                   </div>
                   <div className="col-span-12">
@@ -71,17 +123,19 @@ const page = () => {
                       Do you have an account?
                       <Link
                         href="sign-in"
-                        className="link font-semibold text-primary">
+                        className="link font-semibold text-primary"
+                      >
                         Signin
                       </Link>
                     </p>
                   </div>
                   <div className="col-span-12">
-                    <Link
-                      href="#"
-                      className="link inline-flex items-center gap-2 py-3 px-6 rounded-full bg-primary text-white :bg-primary-400 hover:text-white font-semibold">
-                      <span className="inline-block"> Signup </span>
-                    </Link>
+                    <div
+                      onClick={handleSubmit}
+                      className="link inline-flex items-center gap-2 py-3 px-6 rounded-full bg-primary text-white :bg-primary-400 hover:text-white font-semibold cursor-pointer"
+                    >
+                      <span className="inline-block"> Sign Up </span>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -92,6 +146,7 @@ const page = () => {
           </div>
         </div>
       </div>
+      <Toaster position="top-right" />
     </div>
   );
 };
