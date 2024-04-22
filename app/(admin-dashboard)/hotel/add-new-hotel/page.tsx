@@ -25,8 +25,8 @@ import toast, { Toaster } from "react-hot-toast";
 const Page = () => {
   const optionCategory = [
     { name: "Hotel", id: 1 },
-    { name: "Cab", id: 2 },
-    { name: "Motel", id: 3 },
+    // { name: "Cab", id: 2 },
+    { name: "Motel", id: 2 },
   ];
   const optionTag = [{ name: "One" }, { name: "Two" }, { name: "Three" }];
   const optionBeds = [{ name: "1" }, { name: "2" }, { name: "3" }];

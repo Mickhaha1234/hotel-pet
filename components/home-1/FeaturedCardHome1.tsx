@@ -108,7 +108,7 @@ const FeaturedCardHome1 = ({ item }: any) => {
             <span className="inline-block">{address} </span>
           </div>
           <Link
-            href="property-details-1"
+            href={`property-details-1/${id}`}
             className="text-base sm:text-xl font-medium text-neutral-700 mb-4">
             {title}
           </Link>
@@ -137,10 +137,10 @@ const FeaturedCardHome1 = ({ item }: any) => {
         <div className="px-2 sm:px-5 pb-5 pt-3">
           <div className="flex flex-wrap justify-between items-center">
             <span className="text-primary text-xl font-medium">
-              ${price}
-              <span className="text-base text-neutral-700"> /month </span>
+              {price}฿
+              <span className="text-base text-neutral-700"> /day </span>
             </span>
-            <Link href="property-details-1" className="btn-outline">
+            <Link href={`property-details-1/${id}`} className="btn-outline">
               Read More
             </Link>
           </div>

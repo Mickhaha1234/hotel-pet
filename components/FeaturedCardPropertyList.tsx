@@ -106,7 +106,7 @@ const FeaturedCardPropertyList = ({ item }: any) => {
             <span className="inline-block truncate ">{address} </span>
           </div>
           <Link
-            href="property-details-1"
+            href={`property-details-1/${id}`}
             className="texttext-xl font-medium text-neutral-700 mb-4">
             {title}
           </Link>
@@ -138,7 +138,7 @@ const FeaturedCardPropertyList = ({ item }: any) => {
               ${price}
               <span className="text-base text-neutral-700"> /month </span>
             </span>
-            <Link href="property-details-1" className="btn-outline">
+            <Link href={`property-details-1/${id}`} className="btn-outline">
               Read More
             </Link>
           </div>
