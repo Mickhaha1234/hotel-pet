@@ -41,7 +41,7 @@ const Page = () => {
           placeholder="Search..."
           id="first-name"
           value={searchTerm}
-          // onChange={handleSearchChange}
+          onChange={handleSearchChange}
         />
       </div>
     

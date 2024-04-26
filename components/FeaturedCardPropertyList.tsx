@@ -135,8 +135,8 @@ const FeaturedCardPropertyList = ({ item }: any) => {
         <div className="px-2 sm:px-5 pb-5 pt-3">
           <div className="flex flex-wrap justify-between items-center">
             <span className="text-primary text-xl font-medium">
-              ${price}
-              <span className="text-base text-neutral-700"> /month </span>
+            {price}฿
+              <span className="text-base text-neutral-700"> /Day </span>
             </span>
             <Link href={`property-details-1/${id}`} className="btn-outline">
               Read More

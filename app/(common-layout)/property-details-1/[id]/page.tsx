@@ -464,34 +464,34 @@ const Page = ({ params }: { params: { id: string } }) => {
                     <ul className="flex flex-col">
                       <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 bg-[var(--btn-bg)] rounded-full">
-                          <p className="mb-0">Monday - Thursday</p>
-                          <p className="mb-0 font-medium text-lg">฿21,713</p>
+                          <p className="mb-0">Monday - Sunday</p>
+                          <p className="mb-0 font-medium text-lg">{featuredItems!.price}฿</p>
                         </div>
                       </li>
-                      <li>
+                      {/* <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 rounded-full">
                           <p className="mb-0">Friday - Sunday</p>
-                          <p className="mb-0 font-medium text-lg">฿25,976</p>
+                          <p className="mb-0 font-medium text-lg">{featuredItems!.price}฿</p>
                         </div>
-                      </li>
-                      <li>
+                      </li> */}
+                      {/* <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 bg-[var(--btn-bg)] rounded-full">
                           <p className="mb-0">Rent by month</p>
                           <p className="mb-0 font-medium text-lg">-7.34%</p>
                         </div>
-                      </li>
-                      <li>
+                      </li> */}
+                      {/* <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 rounded-full">
                           <p className="mb-0">Min number of nights</p>
                           <p className="mb-0 font-medium text-lg">1 night</p>
                         </div>
-                      </li>
-                      <li>
+                      </li> */}
+                      {/* <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 bg-[var(--btn-bg)] rounded-full">
                           <p className="mb-0">Max number of nights</p>
                           <p className="mb-0 font-medium text-lg">70 nights</p>
                         </div>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                   <div className="flex items-center justify-between gap-4 flex-wrap">

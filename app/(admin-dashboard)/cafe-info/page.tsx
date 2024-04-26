@@ -153,14 +153,14 @@ const Page = () => {
           >
             <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-b-2xl">
               <div className="border-t pt-4">
-                <p className="mb-4 text-xl font-medium">
+                {/* <p className="mb-4 text-xl font-medium">
                   Choose Listing Category :
-                </p>
-                <SelectUI
+                </p> */}
+                {/* <SelectUI
                   options={optionCategory}
                   selected={selected}
                   setSelected={setSelected}
-                />
+                /> */}
                 <p className="mt-6 mb-4 text-xl font-medium">ชื่อ:</p>
                 <input
                   type="text"

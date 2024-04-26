@@ -20,6 +20,7 @@ const PropertyListCard = ({ item }: any) => {
     id,
     address,
     area,
+    description,
     bath,
     bed,
     img,
@@ -105,10 +106,10 @@ const PropertyListCard = ({ item }: any) => {
             </Link>
             <ul className="flex flex-wrap divide-x divide-dashed justify-between mt-5 pl-3 mb-5">
               <li className="flex flex-col px-2 gap-1">
-                <i className="las la-city text-xl"></i>
-                <span className="block">{rooms} Room</span>
+                <i className="las la-book text-xl"></i>
+                <span className="block">{description} description</span>
               </li>
-              <li className="flex flex-col px-1 xxl:px-2 gap-1">
+              {/* <li className="flex flex-col px-1 xxl:px-2 gap-1">
                 <i className="las la-bed text-xl"></i>
                 <span className="block"> {bed} Bed </span>
               </li>
@@ -119,7 +120,7 @@ const PropertyListCard = ({ item }: any) => {
               <li className="flex flex-col px-1 xxl:px-2 gap-1">
                 <i className="las la-arrows-alt text-xl"></i>
                 <span className="block"> {area} sft </span>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="mx-3 md:mx-5">
@@ -128,8 +129,8 @@ const PropertyListCard = ({ item }: any) => {
           <div className="px-3 sm:px-4 md:px-5 pb-5 pt-4">
             <div className="flex flex-wrap gap-3 justify-between items-center">
               <span className="text-primary text-xl font-medium">
-                ${price}
-                <span className="text-base text-neutral-700">/month</span>
+              {price}฿
+                <span className="text-base text-neutral-700">/pic </span>
               </span>
               <Link href="/property-details-1" className="btn-outline ">
                 Read More

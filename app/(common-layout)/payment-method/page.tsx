@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+
 const page = () => {
   return (
     <div className="py-[30px] lg:py-[60px] bg-[var(--bg-2)] px-3">
