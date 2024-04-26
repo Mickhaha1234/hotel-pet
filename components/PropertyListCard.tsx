@@ -99,7 +99,7 @@ const PropertyListCard = ({ item }: any) => {
               <span className="inline-block truncate">{address}</span>
             </div>
             <Link
-              href="property-details-1"
+                href={`property-details-1/${id}`}
               className="text-xl font-medium text-neutral-700 pl-4">
               {title.substr(0, 20)}
             </Link>

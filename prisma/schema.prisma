@@ -110,4 +110,21 @@ model Cafe {
   Phone       String?
 
 }
+model Booking {
+  bookingId     Int      @id @default(autoincrement())
+  hotelId     Int?      
+  price       Decimal? @db.Decimal(65, 2)
+  description String?
+  image       String?
+  address     String?
+  email       String?
+  website     String?
+  parking     Int?
+  title       String?
+  Phone       String?
+  startDate   DateTime
+  endDate     DateTime
+  guest      Int?
+
+}
 

@@ -13,7 +13,7 @@ import { HeartIcon } from "@heroicons/react/20/solid";
 import toast, { Toaster } from "react-hot-toast";
 const notifyAdd = () => toast.success("Added to Wishlist.");
 const notifyRemove = () => toast.error("Removed From Wishlist.");
-const FeaturedCardPropertyList = ({ item }: any) => {
+const FeaturedCardResterongList  = ({ item }: any) => {
   const [favourite, setFavourite] = useState(false);
   const {
     id,
@@ -149,4 +149,4 @@ const FeaturedCardPropertyList = ({ item }: any) => {
   );
 };
 
-export default FeaturedCardPropertyList;
+export default FeaturedCardResterongList ;

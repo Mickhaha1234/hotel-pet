@@ -3,13 +3,32 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const Cafe = await prisma.cafe.findMany();
+    const Cafe = await prisma.cafe.findMany({
+      select: {
+        cafeId: true,
+        title: true,
 
-    const transformedCafe = Cafe.map((v) => ({
-      ...v,
-      img: v.image ? [v.image] : ["/img/featured-img-1.jpg"],
+       
+        price: true,
+    
+        image: true,
+      },
+    });
+
+    // const transformedCafe = Cafe.map((v) => ({
+    //   ...v,
+    //   img: v.image ? [v.image] : ["/img/featured-img-1.jpg"],
+    // }));
+    const transformedCafe = Cafe.map((cafe) => ({
+      id: cafe.cafeId,
+      title: cafe.title,
+      
+      
+      price: cafe.price ? cafe.price.toLocaleString() : "N/A",
+      favourite: false,
+      popular: true,
+      img: cafe.image ? [cafe.image] : ["/img/featured-img-1.jpg"],
     }));
-
     return NextResponse.json(
       {
         message: "Ok",

@@ -57,7 +57,7 @@ const page = () => {
           <div className="w-full md:w-1/2">
             <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8">
               <form action="#">
-                <h3 className="mb-4 h3"> Welcome Back!tttt </h3>
+                <h3 className="mb-4 h3"> Welcome Travel Tailes</h3>
                 <p className="mb-10"> Sign in to your account and join us </p>
                 <div className="grid grid-cols-12 gap-4">
                   <div className="col-span-12">
@@ -84,7 +84,7 @@ const page = () => {
                       Enter Your Password
                     </label>
                     <input
-                      type="text"
+                      type="password"
                       className="w-full bg-[var(--bg-1)] border focus:outline-none rounded-full py-3 px-5 mb-3"
                       placeholder="Enter Your Password"
                       id="enter-password"
