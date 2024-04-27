@@ -21,7 +21,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/hotel");
+        const response = await fetch("/api/cafe");
         const data = await response.json();
 
         setFeaturedItems(data.data);
@@ -34,27 +34,27 @@ const Page = () => {
   }, []);
   console.log(featuredItems)
    
-  const onclickdelete = async (hotelId : string) => {
+  const onclickdelete = async (cafeId : string) => {
     try {
        // Perform a DELETE request to the API endpoint for deleting a hotel
-       const response = await fetch(`/api/hotel/${hotelId}`, {
+       const response = await fetch(`/api/cafe/${cafeId}`, {
          method: 'DELETE',
        });
    
        // Check if the deletion was successful
        if (!response.ok) {
-         throw new Error('Failed to delete hotel');
+         throw new Error('Failed to delete cafe');
        }
    
        // Optionally, fetch the updated list of hotels after deletion
-       const updatedResponse = await fetch("/api/hotel");
+       const updatedResponse = await fetch("/api/cafe");
        const updatedData = await updatedResponse.json();
    
        // Update the state with the new list of hotels
        setFeaturedItems(updatedData.data);
        toast.success("Delete completed");
       } catch (error) {
-        toast.error("Can't Delete Hotel");
+        toast.error("Can't Delete cafe");
       }
    };
    
@@ -136,7 +136,7 @@ const Page = () => {
                       <td className="py-3 lg:py-7 px-2 flex gap-2 items-center">
                         
                         <Link
-                        className="text-primary" href={`/hotel/edit-hotel/${id}`}>
+                        className="text-primary" href={`/cafe/edit-cafe/${id}`}>
                           <PencilSquareIcon className="w-5 h-5" />
                         </Link>
                         <button className="text-[var(--secondary-500)]" onClick={()=>onclickdelete(id)}>

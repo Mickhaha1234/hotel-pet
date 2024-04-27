@@ -14,6 +14,8 @@ export async function GET() {
         price: true,
         type: true,
         image: true,
+        yearBuild: true,
+        email: true,
       },
     });
 
@@ -21,12 +23,14 @@ export async function GET() {
     const transformedHotels = hotels.map((hotel) => ({
       id: hotel.hotelId,
       title: hotel.title,
+      email: hotel.email,
       address: hotel.address,
       rooms: hotel.bedRooms,
       type: hotel.type,
       bed: hotel.bedRooms,
       bath: hotel.bathRooms,
       area: hotel.area,
+      yearBulid: hotel.yearBuild,
       price: hotel.price ? hotel.price.toLocaleString() : "N/A",
       favourite: false,
       popular: true,

@@ -169,12 +169,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 ))}
               </div>
               <div className="border-t border-dashed my-6"></div>
-              <Link
+              {/* <Link
                 href="#"
                 className="btn-outline flex justify-center items-center gap-2 text-primary font-semibold w-full text-center">
                 <ArrowPathIcon className="w-6 h-6" />
                 Reset Filters
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className="col-span-12 md:col-span-8">

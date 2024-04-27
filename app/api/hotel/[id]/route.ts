@@ -20,6 +20,21 @@ export async function GET(req: NextRequest, { params }: { params: { id: string}}
       bed: hotel.bedRooms,
       bath: hotel.bathRooms,
       area: hotel.area,
+      tagLine: hotel.tagLine,
+      tag: hotel.tag,
+      beds: hotel.beds,
+      garages: hotel.garages,
+      propertyId: hotel.propertyId,
+      bedRooms: hotel.bedRooms,
+      parking: hotel.parking,
+      dimensions: hotel.dimensions,
+      zipCode:hotel.zipCode,
+      Phone:hotel.Phone,
+      fax:hotel.fax,
+      email:hotel.email,
+      website:hotel.website,
+      features:hotel.features,
+      person: hotel.person,
       videoLink: hotel.videoLink,
       price: hotel.price ? hotel.price.toLocaleString() : "N/A",
       favourite: false,
@@ -49,3 +64,66 @@ export async function GET(req: NextRequest, { params }: { params: { id: string}}
   }
 }
 
+
+
+
+export async function PUT(req: NextRequest, { params }: { params: { id: string}}) {
+  const id = params.id;
+
+ const updateData: any = await req.json();
+
+ try {
+    const updatedHotel = await prisma.hotels.update({
+      where: { hotelId: Number(id)  },
+      data: updateData,
+    });
+
+    return NextResponse.json(
+      {
+        message: "Hotel updated successfully",
+        data: updatedHotel,
+      },
+      { status: 200 }
+    );
+ } catch (error) {
+    return NextResponse.json(
+      {
+        message: "Failed to update Hotel",
+        error,
+      },
+      {
+        status: 500,
+      }
+    );
+ }
+}
+export async function DELETE(req: NextRequest, { params }: { params: { id: string}}) {
+  const id = params.id;
+ 
+  try {
+     // Delete the hotel by its ID
+     const deletedHotel = await prisma.hotels.delete({
+       where: { hotelId: Number(id) },
+     });
+ 
+     // Return a response indicating the hotel was deleted successfully
+     return NextResponse.json(
+       {
+         message: "Hotel deleted successfully",
+         data: deletedHotel,
+       },
+       { status: 200 }
+     );
+  } catch (error) {
+     // Handle any errors that occur during the deletion process
+     return NextResponse.json(
+       {
+         message: "Failed to delete Hotel",
+         error,
+       },
+       {
+         status: 500,
+       }
+     );
+  }
+ }

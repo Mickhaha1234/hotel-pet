@@ -6,10 +6,10 @@ export const sidenavData = [
     submenus: [
       { url: "/hotel/all-hotels", title: "All Hotels" },
       { url: "/hotel/add-new-hotel", title: "Add New Hotel" },
-      { url: "/hotel/attributes", title: "Attributes" },
-      { url: "/hotel/room-attributes", title: "Room Attributes" },
-      { url: "/hotel/edit-hotel", title: "Edit Hotel" },
-      { url: "/hotel/manage-room", title: "Mange Room" },
+      // { url: "/hotel/attributes", title: "Attributes" },
+      // { url: "/hotel/room-attributes", title: "Room Attributes" },
+      // { url: "/hotel/edit-hotel", title: "Edit Hotel" },
+      // { url: "/hotel/manage-room", title: "Mange Room" },
     ],
   },
   {
@@ -18,6 +18,7 @@ export const sidenavData = [
     icon: <i className="las la-concierge-bell text-2xl"></i>, 
     submenus: [
       { url: "/resterong-info/add-resterong", title: "Add New Resterong" },
+      { url: "/resterong-info/add-resterong", title: "Edit Resterong " },
       // { url: "/tour/add-new-tour", title: "Add New Resterong" },
       // { url: "/tour/categories", title: "Categories" },
       // { url: "/tour/attributes", title: "Attributes" },
@@ -31,7 +32,9 @@ export const sidenavData = [
     name: "Cafe",
     icon: <i className="las la-coffee text-2xl"></i>,
     submenus: [
-      { url: "/cafe-info", title: "Add New cafe" },
+      { url: "/cafe/add-new-cafe", title: "Add New cafe" },
+      { url: "/cafe/edit-cafe", title: "Edit cafe" },
+      { url: "/cafe/all-cafe", title: "All cafe" },
     //   { url: "/space/add-new-space", title: "Add New Space" },
     //   { url: "/space/attributes", title: "Attributes" },
     //   { url: "/space/availability", title: "Availability" },
