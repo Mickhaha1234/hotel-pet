@@ -164,7 +164,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     console.log(payload);
 
     try {
-      const response = await fetch(`/api/hotel/${params.id}`, {
+      const response = await fetch(`/api/cafe/${params.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -201,7 +201,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const fetchHotelById = async () => {
       try {
-        const response = await fetch(`/api/hotel/${params.id}`);
+        const response = await fetch(`/api/cafe/${params.id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch hotel");
         }
@@ -250,9 +250,9 @@ const Page = ({ params }: { params: { id: string } }) => {
   return (
     <div className="bg-[var(--bg-2)]">
       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
-        <h2 className="h2 text-white">Edit Hotel</h2>
+        <h2 className="h2 text-white">Edit cafe</h2>
         <Link href="/add-property" className="btn-primary">
-          <EyeIcon className="w-5 h-5" /> Edit Hotel
+          <EyeIcon className="w-5 h-5" /> Edit cafe
         </Link>
       </div>
       {/* statisticts */}

@@ -17,8 +17,8 @@ export const sidenavData = [
     name: "Resterong",
     icon: <i className="las la-concierge-bell text-2xl"></i>, 
     submenus: [
-      { url: "/resterong-info/add-resterong", title: "Add New Resterong" },
-      { url: "/resterong-info/add-resterong", title: "Edit Resterong " },
+      { url: "/resterong/add-resterong", title: "Add New Resterong" },
+      { url: "/resterong/all-resterong", title: "All Resterong " },
       // { url: "/tour/add-new-tour", title: "Add New Resterong" },
       // { url: "/tour/categories", title: "Categories" },
       // { url: "/tour/attributes", title: "Attributes" },
@@ -33,7 +33,7 @@ export const sidenavData = [
     icon: <i className="las la-coffee text-2xl"></i>,
     submenus: [
       { url: "/cafe/add-new-cafe", title: "Add New cafe" },
-      { url: "/cafe/edit-cafe", title: "Edit cafe" },
+      // { url: "/cafe/edit-cafe", title: "Edit cafe" },
       { url: "/cafe/all-cafe", title: "All cafe" },
     //   { url: "/space/add-new-space", title: "Add New Space" },
     //   { url: "/space/attributes", title: "Attributes" },
