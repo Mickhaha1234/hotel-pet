@@ -86,7 +86,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/hotel/${params.id}`);
+        const response = await fetch(`/api/resteruent/${params.id}`);
         const data = await response.json();
 
         setFeaturedItems(data.data[0]);

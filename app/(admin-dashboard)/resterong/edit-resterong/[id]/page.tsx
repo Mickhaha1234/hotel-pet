@@ -164,7 +164,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     console.log(payload);
 
     try {
-      const response = await fetch(`/api/cafe/${params.id}`, {
+      const response = await fetch(`/api/restaurant/${params.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -178,7 +178,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 
     
       toast.success("Update completed");
-      router.push('/hotel/all-hotels')
+      router.push('/resterong/all-resterong')
     } catch (error) {
       toast.error("Can't Update Hotel");
     }
@@ -201,9 +201,9 @@ const Page = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const fetchHotelById = async () => {
       try {
-        const response = await fetch(`/api/cafe/${params.id}`);
+        const response = await fetch(`/api/restaurant/${params.id}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch hotel");
+          throw new Error("Failed to fetch restaurant");
         }
         let data = await response.json();
         data=data.data[0]
@@ -237,8 +237,8 @@ const Page = ({ params }: { params: { id: string } }) => {
         setwebsite(data.website);
         setimage(data.img[0]);
       } catch (error) {
-        console.error("Failed to fetch cafe:", error);
-        toast.error("Failed to fetch cafe");
+        console.error("Failed to fetch hotel:", error);
+        toast.error("Failed to fetch hotel");
       }
     };
 
@@ -250,9 +250,9 @@ const Page = ({ params }: { params: { id: string } }) => {
   return (
     <div className="bg-[var(--bg-2)]">
       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
-        <h2 className="h2 text-white">Edit Cafe</h2>
+        <h2 className="h2 text-white">Edit Hotel</h2>
         <Link href="/add-property" className="btn-primary">
-          <EyeIcon className="w-5 h-5" /> Edit Cafe
+          <EyeIcon className="w-5 h-5" /> Edit Hotel
         </Link>
       </div>
       {/* statisticts */}
@@ -265,7 +265,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   open ? "rounded-t-2xl" : "rounded-2xl"
                 } flex justify-between items-center p-4 md:p-6 lg:p-8 duration-500 bg-white`}
               >
-                <h3 className="h3">Cafe Information </h3>
+                <h3 className="h3">Hotel Information </h3>
                 <ChevronDownIcon
                   className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                     open ? "rotate-180" : ""

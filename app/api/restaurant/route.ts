@@ -3,24 +3,43 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const restaurant = await prisma.restaurant.findMany();
+    const restaurant = await prisma.restaurant.findMany({
+      select: {
+        restaurantId: true,
+        title: true,
 
-    const transRestaurant = restaurant.map((v) => ({
-      ...v,
-      img: v.image ? [v.image] : ["/img/featured-img-1.jpg"],
+       
+        price: true,
+    
+        image: true,
+      },
+    });
+
+    // const transformedCafe = Cafe.map((v) => ({
+    //   ...v,
+    //   img: v.image ? [v.image] : ["/img/featured-img-1.jpg"],
+    // }));
+    const transformedrestaurant = restaurant.map((restaurant) => ({
+      id: restaurant.restaurantId,
+      title: restaurant.title,
+      
+      
+      price: restaurant.price ? restaurant.price.toLocaleString() : "N/A",
+      favourite: false,
+      popular: true,
+      img: restaurant.image ? [restaurant.image] : ["/img/featured-img-1.jpg"],
     }));
-
     return NextResponse.json(
       {
         message: "Ok",
-        data: transRestaurant,
+        data: transformedrestaurant,
       },
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
       {
-        message: "Failed to fetch Restaurant",
+        message: "Failed to fetch Cafe",
         error,
       },
       {
@@ -33,7 +52,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   const { price, description, image, email, website, parking, title, Phone } = await req.json();
   try {
-    const newRestaurant = await prisma.restaurant.create({
+    const newrestaurant = await prisma.restaurant.create({
       data: {
         price: Number(price),
         description: description,
@@ -47,15 +66,15 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json(
       {
-        message: "Restaurant created successfully",
-        data: newRestaurant,
+        message: "restaurant created successfully",
+        data: newrestaurant,
       },
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
       {
-        message: "Failed to Create a Restaurant",
+        message: "Failed to Create a Cafe",
         error,
       },
       {

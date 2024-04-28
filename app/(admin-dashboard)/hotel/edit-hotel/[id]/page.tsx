@@ -103,7 +103,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       image: image,
       videoLink: videoLink,
       address: address,
-      features: amenitiesString,
+      // features: amenitiesString,
       zipCode: zipCode,
       Phone: Phone,
       fax: fax,
@@ -111,16 +111,16 @@ const Page = ({ params }: { params: { id: string } }) => {
       website: website,
       categoryId: selected.id,
       // features: features,
-      // "features": "[Gym, WiFi, Internet]",
+      features: "[Gym, WiFi, Internet]",
        
       
 
      
-      selectedTag: selectedtag.name,
-      selectedBeds: Number(selectedbeds.name),
-      selectedBathRooms: Number(selectedbathRooms.name),
-      selectedGarages: Number(selectedgarages.name),
-      selectedPerson: Number(selectedperson.name),
+      // selectedTag: selectedtag.name,
+      // selectedBeds: Number(selectedbeds.name),
+      // selectedBathRooms: Number(selectedbathRooms.name),
+      // selectedGarages: Number(selectedgarages.name),
+      // selectedPerson: Number(selectedperson.name),
      
       
       
@@ -160,8 +160,10 @@ const Page = ({ params }: { params: { id: string } }) => {
        
        
     // };
-
+     
     console.log(payload);
+    // console.log(payload1);
+
 
     try {
       const response = await fetch(`/api/hotel/${params.id}`, {

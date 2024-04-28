@@ -1,10 +1,30 @@
 "use client";
 
+import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
-const page = () => {
+interface FeaturedItem {
+  id: number;
+  title: string | undefined;
+  address: string;
+  rooms: number;
+  type: string;
+  bed: number;
+  bath: number | null;
+  area: string;
+  price: string;
+  videoLink: string;
+  favourite: boolean;
+  popular: boolean;
+  description: string;
+  yearBuild: string;
+  img: string[];
+}
+
+const page = ({ params }: { params: { id: string } }) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [people, setpeople] = useState("");
@@ -12,6 +32,26 @@ const page = () => {
   const [email, setemail] = useState("");
   const [address, setaddress] = useState("");
   const [phone, setphone] = useState("");
+  const [subTotal, setsubTotal] = useState("");
+  const [totalPrice, settotalPrice] = useState("");
+  const [days, setdays] = useState("0");
+  const [featuredItems, setFeaturedItems] = useState<FeaturedItem | undefined>({
+    id: 1,
+    title: "",
+    address: "",
+    rooms: 1,
+    type: "",
+    bed: 1,
+    bath: 1,
+    area: "",
+    price: "",
+    videoLink: "www.google.com",
+    favourite: true,
+    popular: true,
+    yearBuild: "",
+    description: "",
+    img: [],
+  });
 
   const handleStartDateChange = (event: any) => {
     setStartDate(event.target.value);
@@ -20,19 +60,94 @@ const page = () => {
   const handleEndDateChange = (event: any) => {
     setEndDate(event.target.value);
   };
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
 
-    console.log("startDate ", startDate);
-    console.log("endDate ", endDate);
-    console.log("people ", people);
-    console.log("name ", name);
-    console.log("email ", email);
-    console.log("address ", address);
-    console.log("phone ", phone);
+  const handlePeopleChange = (event: any) => {
+    setpeople(event.target.value);
+
+    setsubTotal(
+      (Number(featuredItems?.price) * Number(days)).toFixed(2).toString()
+    );
+
+    settotalPrice(
+      (
+        (Number(featuredItems?.price) * Number(days)) *
+        1.15
+      ).toFixed(2).toString()
+    );
   };
 
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    const payload = {
+      hotelId: Number(params.id),
+      price: Number(totalPrice).toFixed(2),
+      address: address,
+      email: email,
+      name: name,
+      Phone: phone,
+      startDate: startDate,
+      endDate: endDate,
+      people: people,
+    };
+
+    try {
+      const response = await fetch("/api/payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      console.log(payload);
+      
+
+      toast.success("Booking Completed");
+    } catch (error) {
+      toast.error("Can't Booking");
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/hotel/${params.id}`);
+        const data = await response.json();
+
+        setFeaturedItems(data.data[0]);
+        setsubTotal(featuredItems!.price.toString())
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setsubTotal(featuredItems!.price.toString())
+    settotalPrice(Number(Number(featuredItems!.price) * 1.15).toFixed(2).toString())
+  }, [featuredItems?.price])
   
+  useEffect(() => {
+    const startDates = new Date(startDate);
+    const endDates = new Date(endDate);
+    const diffInMilliseconds =(endDates.getTime() - startDates.getTime()) as number;
+    const diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
+    const roundedDiffInDays = Math.round(diffInDays);
+    console.log(roundedDiffInDays); 
+    
+    setdays(!roundedDiffInDays ? "0" : roundedDiffInDays.toString())
+  }, [startDate, endDate])
+  
+  console.log('days ', days);
+  
+
   return (
     <div className="py-[30px] lg:py-[60px] bg-[var(--bg-2)] px-3">
       <div className="container">
@@ -71,7 +186,7 @@ const page = () => {
                       <input
                         type="text"
                         value={people}
-                        onChange={(e) => setpeople(e.target.value)}
+                        onChange={handlePeopleChange}
                         className="border"
                       />
                     </div>
@@ -94,7 +209,7 @@ const page = () => {
                         href="hotel-listing-details"
                         className="link block text-[var(--neutral-700)] hover:text-primary text-xl font-medium mb-5"
                       >
-                        Regal North Hills - 4150
+                        {featuredItems!.title}
                       </Link>
                       <div className="flex justify-between gap-3">
                         <div className="flex items-center gap-1">
@@ -151,7 +266,10 @@ const page = () => {
                   </p>
                   <p className="mb-0">
                     Total Payable Amount:
-                    <span className="text-primary">$1115</span>
+                    <span className="text-primary">
+                      {" "}
+                      {featuredItems!.price}฿{" "}
+                    </span>
                   </p>
                 </div>
                 <div className="border border-dashed my-6"></div>
@@ -313,37 +431,14 @@ const page = () => {
             </div>
           </div>
           <div className="col-span-12 lg:col-span-4">
-            <div className="bg-white rounded-2xl p-3 sm:p-4 lg:p-6 mb-6">
-              <h4 className="mb-6 text-2xl font-semibold">
-                {" "}
-                Enter Promo Code{" "}
-              </h4>
-              <div className="p-2 rounded-full border border-neutral-40 bg-[var(--bg-2)] mb-4">
-                <form action="#" className="flex items-center">
-                  <input
-                    type="text"
-                    placeholder="Promo Code"
-                    className="w-full border-0 bg-transparent text-[var(--neutral-700)] px-3 py-2 ::placeholder-neutral-600 focus:outline-none"
-                  />
-                  <button
-                    type="button"
-                    className="grid place-content-center px-6 py-3 rounded-full bg-primary text-white border-0 text-sm"
-                  >
-                    Apply
-                  </button>
-                </form>
-              </div>
-              <span className="block text-[var(--neutral-700)]">
-                20% Off Discount
-              </span>
-            </div>
+            
             <div className="bg-white rounded-2xl p-3 sm:p-4 lg:p-6 border">
               <h4 className="mb-0 text-2xl font-semibold">Order Summary</h4>
               <div className="border border-dashed my-8"></div>
               <ul className="gap-4">
                 <li className="flex items-center justify-between flex-wrap">
                   <p className="mb-0">Subtotal</p>
-                  <p className="mb-0 font-medium">$1015</p>
+                  <p className="mb-0 font-medium">{subTotal}</p>
                 </li>
                 <li className="flex items-center justify-between flex-wrap">
                   <p className="mb-0">Service charge</p>
@@ -353,15 +448,11 @@ const page = () => {
                   <p className="mb-0">Tax</p>
                   <p className="mb-0 font-medium">5%</p>
                 </li>
-                <li className="flex items-center justify-between flex-wrap">
-                  <p className="mb-0">Promo Code</p>
-                  <p className="mb-0 font-medium">20% off</p>
-                </li>
               </ul>
               <div className="border border-dashed my-8"></div>
               <div className="flex items-center justify-between flex-wrap mb-6">
                 <p className="mb-0">Payable Now</p>
-                <p className="mb-0 font-medium">1115</p>
+                <p className="mb-0 font-medium">{totalPrice}</p>
               </div>
               <button
                 onClick={handleSubmit}
@@ -373,6 +464,7 @@ const page = () => {
           </div>
         </div>
       </div>
+      <Toaster position="top-right" />
     </div>
   );
 };

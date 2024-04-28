@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   ChevronDownIcon,
   CloudArrowUpIcon,
@@ -15,7 +15,6 @@ import { propertyAmenities } from "@/public/data/addpropertyAmenities";
 import CheckboxCustom from "@/components/Checkbox";
 import input from "postcss/lib/input";
 import toast, { Toaster } from "react-hot-toast";
-import { useRouter } from "next/navigation";
 
 // const handleChange = (event: { target: { name: any; value: any } }) => {
 //   const name = event.target.name;
@@ -23,12 +22,11 @@ import { useRouter } from "next/navigation";
 //   setInputs((values: any) => ({ ...values, [name]: value }));
 // };
 
-const Page = ({ params }: { params: { id: string } }) => {
-  const router = useRouter();
+const Page = () => {
   const optionCategory = [
     { name: "Hotel", id: 1 },
-    // { name: "Cab", id: 2 },
-    { name: "Motel", id: 2 },
+    { name: "Cab", id: 2 },
+    { name: "Motel", id: 3 },
   ];
   const optionTag = [{ name: "One" }, { name: "Two" }, { name: "Three" }];
   const optionBeds = [{ name: "1" }, { name: "2" }, { name: "3" }];
@@ -75,97 +73,26 @@ const Page = ({ params }: { params: { id: string } }) => {
   const [email, setemail] = useState("");
   const [website, setwebsite] = useState("");
   const [image, setimage] = useState("");
-  const [ features, setfeatures] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const amenitiesString =
-      amenities.length > 0 ? `[${amenities.join(", ")}]` : "";
-
     const payload = {
-      title: title,
       price: Number(price),
       description: description,
-      tagLine: tagLine,
-      tag: selectedtag.name,
-      beds: Number(selectedbeds.name),
-      bathRooms: Number(selectedbathRooms.name),
-      garages: Number(selectedgarages.name),
-      person: Number(selectedperson.name),
-      area: Number(area),
-      propertyId: Number(propertyId),
-      type: type,
-      bedRooms: Number(bedRooms),
-      parking: Number(parking),
-      dimensions: dimensions,
-      yearBuild: Number(yearBuild),
       image: image,
-      videoLink: videoLink,
-      address: address,
-      features: amenitiesString,
-      zipCode: zipCode,
-      Phone: Phone,
-      fax: fax,
       email: email,
       website: website,
-      categoryId: selected.id,
-      // features: features,
-      // "features": "[Gym, WiFi, Internet]",
-       
-      
-
-     
-      selectedTag: selectedtag.name,
-      selectedBeds: Number(selectedbeds.name),
-      selectedBathRooms: Number(selectedbathRooms.name),
-      selectedGarages: Number(selectedgarages.name),
-      selectedPerson: Number(selectedperson.name),
-     
-      
-      
-      
-     
-     
-     
+      parking: Number(parking),
+      title: title,
+      Phone: Phone,
     };
-    // const payload1 = {
-      
-    //     "title": "Beautiful Villa",
-    //     "price": 1,
-    //     "description": "A stunning villa with 3 bedrooms, 2 bathrooms, and a beautiful garden.",
-    //     "tagLine": "Luxury Living",
-    //     "tag": "Luxury",
-    //     "beds": 3,
-    //     "bathRooms": 2,
-    //     "garages": 1,
-    //     "person": 6,
-    //     "area": 2000,
-    //     "propertyId": 12345,
-    //     "type": "Villa",
-    //     "bedRooms": 3,
-    //     "parking": 2,
-    //     "dimensions": "2000x1500",
-    //     "yearBuild": 2010,
-    //     "image": "https://example.com/images/villa.jpg",
-    //     "videoLink": "https://example.com/videos/villa.mp4",
-    //     "address": "123 Villa Street, Beautiful City",
-    //     "zipCode": "12345",
-    //     "Phone": "+1234567890",
-    //     "fax": "+1234567891",
-    //     "email": "info@beautifulvilla.com",
-    //     "website": "https://www.beautifulvilla.com",
-    //     "categoryId": 1,
-    //     "features": "[Gym, WiFi, Internet]"
-       
-       
-    // };
 
     console.log(payload);
 
     try {
-      const response = await fetch(`/api/cafe/${params.id}`, {
-        method: "PUT",
+      const response = await fetch("/api/restaurant", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -176,13 +103,11 @@ const Page = ({ params }: { params: { id: string } }) => {
         throw new Error("Network response was not ok");
       }
 
-    
-      toast.success("Update completed");
-      router.push('/hotel/all-hotels')
+      const data = await response.json();
+      toast.success("Save completed");
     } catch (error) {
-      toast.error("Can't Update Hotel");
+      toast.error("Can't save Hotel");
     }
-
   };
 
   const handleAmenitiesChange = (e: any, item: any) => {
@@ -198,61 +123,12 @@ const Page = ({ params }: { params: { id: string } }) => {
     });
   };
 
-  useEffect(() => {
-    const fetchHotelById = async () => {
-      try {
-        const response = await fetch(`/api/cafe/${params.id}`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch hotel");
-        }
-        let data = await response.json();
-        data=data.data[0]
-        console.log(data);
-        // Assuming the response structure matches your payload structure
-        // Update your state with the fetched data
-        setSelected({ name: data.type, id: data.categoryId });
-        setSelectedtag({ name: data.tag });
-        setSelectedbeds({ name: data.beds });
-        setSelectedbathRooms({ name: data.bath });
-        setSelectedgarages({ name: data.garages });
-        setSelectedperson({ name: data.person });
-        settitle(data.title);
-        setprice(data.price);
-        setdescription(data.description);
-        settagLine(data.tagLine);
-        setarea(data.area);
-        setpropertyId(data.propertyId);
-        settype(data.type);
-        setbedRooms(data.bedRooms);
-        setparking(data.parking);
-        setdimensions(data.dimensions);
-        setyearBuild(data.yearBuild);
-        setvideoLink(data.videoLink);
-        setaddress(data.address);
-        setamenities(data.features  );
-        setzipCode(data.zipCode);
-        setPhone(data.Phone);
-        setfax(data.fax);
-        setemail(data.email);
-        setwebsite(data.website);
-        setimage(data.img[0]);
-      } catch (error) {
-        console.error("Failed to fetch cafe:", error);
-        toast.error("Failed to fetch cafe");
-      }
-    };
-
-    if (params.id) {
-      fetchHotelById();
-    }
-  }, [params.id]);
-
   return (
     <div className="bg-[var(--bg-2)]">
       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
-        <h2 className="h2 text-white">Edit Cafe</h2>
+        <h2 className="h2 text-white">Add New Resterong</h2>
         <Link href="/add-property" className="btn-primary">
-          <EyeIcon className="w-5 h-5" /> Edit Cafe
+          <EyeIcon className="w-5 h-5" /> View All Hotel
         </Link>
       </div>
       {/* statisticts */}
@@ -265,7 +141,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   open ? "rounded-t-2xl" : "rounded-2xl"
                 } flex justify-between items-center p-4 md:p-6 lg:p-8 duration-500 bg-white`}
               >
-                <h3 className="h3">Cafe Information </h3>
+                <h3 className="h3">Resterong Information </h3>
                 <ChevronDownIcon
                   className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                     open ? "rotate-180" : ""
@@ -310,129 +186,15 @@ const Page = ({ params }: { params: { id: string } }) => {
                   value={description}
                   onChange={(e) => setdescription(e.target.value)}
                 ></textarea>
-                <p className="mt-6 mb-4 text-xl font-medium">Tagline :</p>
+                <p className="mt-6 mb-4 text-xl font-medium">Parking :</p>
                 <input
                   type="text"
-                  className="w-full border p-2 focus:outline-none rounded-md  text-base"
-                  placeholder="Your tag line"
-                  value={tagLine}
-                  onChange={(e) => settagLine(e.target.value)}
-                />
-                <p className="mt-6 mb-4 text-xl font-medium"> Tag </p>
-                <SelectUI
-                  options={optionTag}
-                  selected={selectedtag}
-                  setSelected={setSelectedtag}
+                  className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
+                  placeholder="3"
+                  value={parking}
+                  onChange={(e) => setparking(e.target.value)}
                 />
               </div>
-            </div>
-          </Accordion>
-          <Accordion
-            buttonContent={(open) => (
-              <div
-                className={`${
-                  open ? "rounded-t-2xl" : "rounded-2xl"
-                } flex justify-between items-center p-4 md:p-6 lg:p-8 mt-6 duration-500 bg-white`}
-              >
-                <h3 className="h3">Property Details </h3>
-                <ChevronDownIcon
-                  className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
-                    open ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            )}
-            initialOpen={true}
-          >
-            <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-b-2xl">
-              <p className="mb-4 text-xl font-medium"> Beds : </p>
-              <SelectUI
-                options={optionBeds}
-                selected={selectedbeds}
-                setSelected={setSelectedbeds}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Bathrooms :</p>
-              <SelectUI
-                options={optionBathRooms}
-                selected={selectedbathRooms}
-                setSelected={setSelectedbathRooms}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Garages :</p>
-              <SelectUI
-                options={optionGarages}
-                selected={selectedgarages}
-                setSelected={setSelectedgarages}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Person :</p>
-              <SelectUI
-                options={optionPerson}
-                selected={selectedperson}
-                setSelected={setSelectedperson}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Area (sq ft) :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="0"
-                value={area}
-                onChange={(e) => setarea(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Property ID :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="Enter ID"
-                value={propertyId}
-                onChange={(e) => setpropertyId(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Type :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="Enter type"
-                value={type}
-                onChange={(e) => settype(e.target.value)}
-              />
-              {/* <p className="mt-6 mb-4 text-xl font-medium">Area :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="Enter area"
-                value={area}
-                onChange={(e) => setarea(e.target.value)}
-              /> */}
-              <p className="mt-6 mb-4 text-xl font-medium">Bedrooms :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="06"
-                value={bedRooms}
-                onChange={(e) => setbedRooms(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Parking :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="3"
-                value={parking}
-                onChange={(e) => setparking(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Dimensions :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="0"
-                value={dimensions}
-                onChange={(e) => setdimensions(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Year Build :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="2023"
-                value={yearBuild}
-                onChange={(e) => setyearBuild(e.target.value)}
-              />
             </div>
           </Accordion>
         </div>
@@ -488,35 +250,7 @@ const Page = ({ params }: { params: { id: string } }) => {
               </div>
             </Accordion>
           </div>
-          <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6">
-            <Accordion
-              buttonContent={(open) => (
-                <div className="rounded-2xl flex items-center justify-between">
-                  <h3 className="h3">Amenities</h3>
-                  <ChevronDownIcon
-                    className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
-                      open ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
-              )}
-              initialOpen={true}
-            >
-              <div className="pt-6">
-                <p className="text-xl font-medium"> Features : </p>
-                <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
-                  {propertyAmenities.map((item) => (
-                    <li key={item} className="py-2">
-                      <CheckboxCustom
-                        label={item}
-                        onChange={(e) => handleAmenitiesChange(e, item)}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Accordion>
-          </div>
+
           <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6">
             <Accordion
               buttonContent={(open) => (
@@ -532,14 +266,6 @@ const Page = ({ params }: { params: { id: string } }) => {
               initialOpen={true}
             >
               <div className="pt-6">
-                <p className="mb-4 text-xl font-medium">Zip/Post Code :</p>
-                <input
-                  type="text"
-                  className="w-full border p-2 focus:outline-none rounded-md text-base"
-                  placeholder="4"
-                  value={zipCode}
-                  onChange={(e) => setzipCode(e.target.value)}
-                />
                 <p className="mt-6 mb-4 text-xl font-medium">Phone :</p>
                 <input
                   type="text"
@@ -548,14 +274,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   value={Phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
-                <p className="mt-6 mb-4 text-xl font-medium"> Fax : </p>
-                <input
-                  type="text"
-                  className="w-full border p-2 focus:outline-none rounded-md text-base"
-                  placeholder="Enter Fax number"
-                  value={fax}
-                  onChange={(e) => setfax(e.target.value)}
-                />
+
                 <p className="mt-6 mb-4 text-xl font-medium">Email :</p>
                 <input
                   type="text"
@@ -597,7 +316,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             className="btn-primary font-semibold my-10"
             onClick={handleSubmit}
           >
-            <span className="inline-block"> Update Hotel</span>
+            <span className="inline-block"> Save new Resterong</span>
           </button>
         </div>
       </section>

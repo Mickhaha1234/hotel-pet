@@ -70,7 +70,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string}}
 export async function PUT(req: NextRequest, { params }: { params: { id: string}}) {
   const id = params.id;
 
- const updateData: any = await req.json();
+ const updateData  = await req.json();
 
  try {
     const updatedHotel = await prisma.hotels.update({
