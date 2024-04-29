@@ -16,6 +16,7 @@ export async function GET() {
         image: true,
         yearBuild: true,
         email: true,
+        location: true,
       },
     });
 
@@ -24,6 +25,7 @@ export async function GET() {
       id: hotel.hotelId,
       title: hotel.title,
       email: hotel.email,
+      location: hotel.location,
       address: hotel.address,
       rooms: hotel.bedRooms,
       type: hotel.type,
@@ -64,6 +66,7 @@ export async function POST(req: NextRequest) {
     description,
     tagLine,
     tag,
+    location,
     beds,
     bathRooms,
     garages,
@@ -101,6 +104,8 @@ export async function POST(req: NextRequest) {
         area: area,
         propertyId: propertyId,
         type: type,
+        location: location,
+
 
         bedRooms: bedRooms,
         parking: parking,

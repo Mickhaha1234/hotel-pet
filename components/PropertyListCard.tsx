@@ -28,6 +28,7 @@ const PropertyListCard = ({ item }: any) => {
     rooms,
     title,
     type,
+    location,
   } = item;
   const handleFavorite = () => {
     setFavourite(!favourite);
@@ -96,7 +97,7 @@ const PropertyListCard = ({ item }: any) => {
           <div>
             <div className="flex items-center pt-3 gap-1 mb-3 pl-4 mt-2">
               <i className="las la-map-marker-alt text-lg text-[#9C742B]"></i>
-              <span className="inline-block truncate">{address}</span>
+              <span className="inline-block truncate">{location}</span>
             </div>
             <Link
                 href={`property-details-1/${id}`}

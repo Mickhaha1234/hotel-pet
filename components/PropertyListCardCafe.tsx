@@ -100,7 +100,7 @@ const PropertyListCard = ({ item }: any) => {
               <span className="inline-block truncate">{address}</span>
             </div>
             <Link
-              href="property-details-1"
+               href={`property-details-1/cafe/${id}`}
               className="text-xl font-medium text-neutral-700 pl-4">
               {title.substr(0, 20)}
             </Link>
@@ -130,7 +130,7 @@ const PropertyListCard = ({ item }: any) => {
             <div className="flex flex-wrap gap-3 justify-between items-center">
               <span className="text-primary text-xl font-medium">
               {price}฿
-                <span className="text-base text-neutral-700">/pic </span>
+                <span className="text-base text-neutral-700">/แก้ว </span>
               </span>
               <Link href="/property-details-1" className="btn-outline ">
                 Read More

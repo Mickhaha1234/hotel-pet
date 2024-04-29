@@ -60,6 +60,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string}}
     const transformedRestaurant = restaurant.map((restaurant) => ({
       id: restaurant.restaurantId,
       title: restaurant.title,
+      location: restaurant.location,
     
      
       

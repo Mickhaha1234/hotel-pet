@@ -1,6 +1,6 @@
 "use client";
 import { featuredItems } from "@/public/data/featured";
-import PropertyListCard from "@/components/PropertyListCard";
+import PropertyListCardResterong from "@/components/PropertyListCardResterong";
 import CardPagination from "@/components/CardPagination";
 import { ChangeEvent, SetStateAction, useEffect, useState } from "react";
 
@@ -47,7 +47,7 @@ const Page = () => {
         />
       </div>
       {filteredItems.map((item, index) => (
-        <PropertyListCard item={item} key={index} />
+        <PropertyListCardResterong item={item} key={index} />
       ))}
       <CardPagination />
     </>

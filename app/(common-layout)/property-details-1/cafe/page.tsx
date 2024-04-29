@@ -50,7 +50,6 @@ interface FeaturedItem {
   description: string;
   yearBuild: string;
   img: string[];
-  location: string;
 }
 
 const Page = ({ params }: { params: { id: string } }) => {
@@ -70,7 +69,6 @@ const Page = ({ params }: { params: { id: string } }) => {
     popular: true,
     yearBuild: "",
     description: "",
-    location: "",
     img: [],
   });
 
@@ -88,7 +86,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/hotel/${params.id}`);
+        const response = await fetch(`/api/cafe/${params.id}`);
         const data = await response.json();
 
         setFeaturedItems(data.data[0]);
@@ -100,9 +98,11 @@ const Page = ({ params }: { params: { id: string } }) => {
     fetchData();
   }, []);
 
+  
   console.log("params.id ", params.id);
 
   console.log(featuredItems);
+  
 
   return (
     <>
@@ -218,12 +218,12 @@ const Page = ({ params }: { params: { id: string } }) => {
                       {featuredItems!.title}
                     </h2>
                     <ul className="flex flex-wrap items-center gap-4 gap-md-0">
-                      <li>
+                      {/* <li>
                       <div className="flex items-center gap-2">
                         <MapIcon className="w-5 h-5 text-[var(--secondary)]" />
-                        <p className="mb-0">{featuredItems!.location}</p>
+                        <p className="mb-0">{featuredItems!.address}</p>
                       </div>
-                    </li>
+                    </li> */}
                       <li>
                         <p className="mb-0">
                           ID:{" "}
@@ -466,34 +466,34 @@ const Page = ({ params }: { params: { id: string } }) => {
                     <ul className="flex flex-col">
                       <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 bg-[var(--btn-bg)] rounded-full">
-                          <p className="mb-0">Monday - Sunday</p>
-                          <p className="mb-0 font-medium text-lg">{featuredItems!.price}฿</p>
+                          <p className="mb-0">Monday - Thursday</p>
+                          <p className="mb-0 font-medium text-lg">฿21,713</p>
                         </div>
                       </li>
-                      {/* <li>
+                      <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 rounded-full">
                           <p className="mb-0">Friday - Sunday</p>
-                          <p className="mb-0 font-medium text-lg">{featuredItems!.price}฿</p>
+                          <p className="mb-0 font-medium text-lg">฿25,976</p>
                         </div>
-                      </li> */}
-                      {/* <li>
+                      </li>
+                      <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 bg-[var(--btn-bg)] rounded-full">
                           <p className="mb-0">Rent by month</p>
                           <p className="mb-0 font-medium text-lg">-7.34%</p>
                         </div>
-                      </li> */}
-                      {/* <li>
+                      </li>
+                      <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 rounded-full">
                           <p className="mb-0">Min number of nights</p>
                           <p className="mb-0 font-medium text-lg">1 night</p>
                         </div>
-                      </li> */}
-                      {/* <li>
+                      </li>
+                      <li>
                         <div className="flex items-center justify-between flex-wrap gap-3 py-4 px-6 bg-[var(--btn-bg)] rounded-full">
                           <p className="mb-0">Max number of nights</p>
                           <p className="mb-0 font-medium text-lg">70 nights</p>
                         </div>
-                      </li> */}
+                      </li>
                     </ul>
                   </div>
                   <div className="flex items-center justify-between gap-4 flex-wrap">
@@ -826,8 +826,8 @@ const Page = ({ params }: { params: { id: string } }) => {
                     </div>
                     <i className="las la-info-circle text-2xl"></i>
                   </div>
-                  <Tab.Group>
-                  {/* <Tab.List className="flex gap-4">
+                  {/* <Tab.Group>
+                  <Tab.List className="flex gap-4">
                     <Tab
                       className={({ selected }) =>
                         classNames(
@@ -849,13 +849,13 @@ const Page = ({ params }: { params: { id: string } }) => {
                     >
                       Enquiry Form
                     </Tab>
-                  </Tab.List> */}
+                  </Tab.List>
                   <Tab.Panels className="mt-5">
                     <Tab.Panel
                       className="tab-pane fade show active"
                       id="booking-list"
                     >
-                      {/* <div className="flex bg-[var(--bg-1)] gap-3 py-4 px-8 rounded-full border border-neutral-40 mb-4">
+                      <div className="flex bg-[var(--bg-1)] gap-3 py-4 px-8 rounded-full border border-neutral-40 mb-4">
                         <i className="las la-calendar text-3xl text-gray-500"></i>
                         <div className="flex-grow">
                           <p className="mb-1">Feb 17 - Feb 25</p>
@@ -873,25 +873,25 @@ const Page = ({ params }: { params: { id: string } }) => {
                             Guests{" "}
                           </p>
                         </div>
-                      </div> */}
-                      {/* <div className="flex items-center justify-between my-4">
+                      </div>
+                      <div className="flex items-center justify-between my-4">
                         <p className="mb-0 clr-neutral-500">
                           {" "}
                           ฿25,976x 4 night{" "}
                         </p>
                         <p className="mb-0 font-medium"> ฿103,904 </p>
-                      </div> */}
-                      {/* <div className="flex items-center justify-between">
+                      </div>
+                      <div className="flex items-center justify-between">
                         <p className="mb-0 clr-neutral-500"> Service charge </p>
                         <p className="mb-0 font-medium"> ฿20,780 </p>
-                      </div> */}
+                      </div>
                       <div className="border border-dashed my-4"></div>
                       <div className="flex items-center justify-between">
                         <p className="mb-0 clr-neutral-500"> Total </p>
-                        <p className="mb-0 font-medium">  {featuredItems!.price}฿ </p>
+                        <p className="mb-0 font-medium"> ฿124,684 </p>
                       </div>
                     </Tab.Panel>
-                    {/* <Tab.Panel className="tab-pane fade" id="enquiry-list">
+                    <Tab.Panel className="tab-pane fade" id="enquiry-list">
                       <form className="flex flex-col gap-5">
                         <input
                           type="text"
@@ -912,38 +912,38 @@ const Page = ({ params }: { params: { id: string } }) => {
                         ></textarea>
                         <CheckboxCustom label="I agree with Terms of Service and Privacy Statement" />
                       </form>
-                    </Tab.Panel> */}
+                    </Tab.Panel>
                   </Tab.Panels>
                 </Tab.Group>
 
                 <Link
-                  href={`/payment-method/${params.id}`}
+                  href="#"
                   className="btn-primary flex items-center justify-center my-6"
                 >
                   Proceed Booking
                 </Link>
                 <ul className="flex justify-center gap-6">
                   <li>
-                    {/* <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2">
                       <button className="w-7 h-7 rounded-full bg-[var(--primary-light)] text-primary grid place-content-center">
                         <HeartIcon className="w-5 h-5" />
                       </button>
                       <span className="inline-block text-sm clr-neutral-500">
                         Save To Wish List
                       </span>
-                    </div> */}
+                    </div>
                   </li>
                   <li>
                     <div className="flex items-center gap-2">
                       <button className="w-7 h-7 rounded-full bg-[var(--primary-light)] text-primary grid place-content-center">
                         <ArrowsRightLeftIcon className="w-5 h-5" />
                       </button>
-                      {/* <span className="inline-block text-sm clr-neutral-500">
+                      <span className="inline-block text-sm clr-neutral-500">
                         Compare
-                      </span> */}
+                      </span>
                     </div>
                   </li>
-                </ul>
+                </ul> */}
                 </div>
               </div>
 

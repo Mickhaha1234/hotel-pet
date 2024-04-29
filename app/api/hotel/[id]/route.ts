@@ -21,6 +21,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string}}
       bath: hotel.bathRooms,
       area: hotel.area,
       tagLine: hotel.tagLine,
+      location:hotel.location,
       tag: hotel.tag,
       beds: hotel.beds,
       garages: hotel.garages,

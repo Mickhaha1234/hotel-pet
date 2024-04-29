@@ -10,6 +10,7 @@ export async function GET() {
 
        
         price: true,
+        location: true,
     
         image: true,
       },
@@ -22,6 +23,7 @@ export async function GET() {
     const transformedCafe = Cafe.map((cafe) => ({
       id: cafe.cafeId,
       title: cafe.title,
+      location: cafe.location,
       
       
       price: cafe.price ? cafe.price.toLocaleString() : "N/A",
@@ -50,7 +52,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const { price, description, image, email, website, parking, title, Phone } = await req.json();
+  const { price, description, image, email, website, parking, title, Phone ,location} = await req.json();
   try {
     const newCafe = await prisma.cafe.create({
       data: {
@@ -62,6 +64,7 @@ export async function POST(req: NextRequest) {
         parking: Number(parking),
         title: title,
         Phone: Phone,
+        location: location,
       },
     });
     return NextResponse.json(

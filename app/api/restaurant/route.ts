@@ -7,6 +7,7 @@ export async function GET() {
       select: {
         restaurantId: true,
         title: true,
+        location: true,
 
        
         price: true,
@@ -22,6 +23,7 @@ export async function GET() {
     const transformedrestaurant = restaurant.map((restaurant) => ({
       id: restaurant.restaurantId,
       title: restaurant.title,
+      location: restaurant.location,
       
       
       price: restaurant.price ? restaurant.price.toLocaleString() : "N/A",
@@ -50,7 +52,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const { price, description, image, email, website, parking, title, Phone } = await req.json();
+  const { price, description, image, email, website, parking, title, Phone ,location} = await req.json();
   try {
     const newrestaurant = await prisma.restaurant.create({
       data: {
@@ -62,6 +64,7 @@ export async function POST(req: NextRequest) {
         parking: Number(parking),
         title: title,
         Phone: Phone,
+        location: location,
       },
     });
     return NextResponse.json(

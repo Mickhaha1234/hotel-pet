@@ -73,6 +73,7 @@ const Page = () => {
   const [email, setemail] = useState("");
   const [website, setwebsite] = useState("");
   const [image, setimage] = useState("");
+  const [location, setilocation] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -112,6 +113,7 @@ const Page = () => {
       email: email,
       website: website,
       image: image,
+      location:location,
     };
 
     console.log(payload);
@@ -279,6 +281,13 @@ const Page = () => {
                 value={area}
                 onChange={(e) => setarea(e.target.value)}
               />
+              {/* <input
+              type="text"
+              className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
+              placeholder="0"
+              value={location}
+              onChange={(e) => setarea(e.target.value)}
+            /> */}
               <p className="mt-6 mb-4 text-xl font-medium">Property ID :</p>
               <input
                 type="text"
@@ -385,6 +394,13 @@ const Page = () => {
                   className="w-full border p-2 focus:outline-none rounded-md text-base"
                   placeholder="Enter Address"
                   value={address}
+                  onChange={(e) => setaddress(e.target.value)}
+                />
+                 <input
+                  type="text"
+                  className="w-full border p-2 focus:outline-none rounded-md text-base"
+                  placeholder="Enter Location"
+                  value={location}
                   onChange={(e) => setaddress(e.target.value)}
                 />
               </div>
