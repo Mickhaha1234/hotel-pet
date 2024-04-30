@@ -85,8 +85,7 @@ const Page = () => {
                       key={id}
                       className="border-b border-dashed hover:bg-[var(--bg-1)] duration-300">
                       <td
-                        className="py-3 lg:py-4 px-2 
- lg:px-4">
+                        className="py-3 lg:py-4 px-2  lg:px-4">
                         {name}
                       </td>
                       <td className="py-3 lg:py-4 px-2">{bookingNo}</td>
@@ -105,9 +104,9 @@ const Page = () => {
                         <button className="text-[var(--secondary-500)]">
                           <TrashIcon className="w-5 h-5" />
                         </button>
-                        <button>
+                        {/* <button>
                           <EllipsisVerticalIcon className="w-5 h-5" />
-                        </button>
+                        </button> */}
                       </td>
                     </tr>
                   )

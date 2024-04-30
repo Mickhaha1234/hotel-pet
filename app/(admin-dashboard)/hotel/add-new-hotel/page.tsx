@@ -197,7 +197,7 @@ const Page = () => {
                   value={title}
                   onChange={(e) => settitle(e.target.value)}
                 />
-                <p className="mt-6 mb-4 text-xl font-medium">Sale Price:</p>
+                <p className="mt-6 mb-4 text-xl font-medium">ราคา:</p>
                 {/* <CustomRangeSlider /> */}
                 <input
                   type="number"
@@ -206,7 +206,7 @@ const Page = () => {
                   value={price}
                   onChange={(e) => setprice(e.target.value)}
                 />
-                <p className="mt-6 mb-4 text-xl font-medium">Description :</p>
+                <p className="mt-6 mb-4 text-xl font-medium">คำอธิบาย :</p>
                 <textarea
                   rows={5}
                   className="w-full border p-2 focus:outline-none rounded-md "
@@ -214,7 +214,7 @@ const Page = () => {
                   value={description}
                   onChange={(e) => setdescription(e.target.value)}
                 ></textarea>
-                <p className="mt-6 mb-4 text-xl font-medium">Tagline :</p>
+                {/* <p className="mt-6 mb-4 text-xl font-medium">Tagline :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md  text-base"
@@ -227,7 +227,7 @@ const Page = () => {
                   options={optionTag}
                   selected={selectedtag}
                   setSelected={setSelectedtag}
-                />
+                /> */}
               </div>
             </div>
           </Accordion>
@@ -238,7 +238,7 @@ const Page = () => {
                   open ? "rounded-t-2xl" : "rounded-2xl"
                 } flex justify-between items-center p-4 md:p-6 lg:p-8 mt-6 duration-500 bg-white`}
               >
-                <h3 className="h3">Property Details </h3>
+                <h3 className="h3">รายละเอียดห้องพัก </h3>
                 <ChevronDownIcon
                   className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                     open ? "rotate-180" : ""
@@ -249,31 +249,31 @@ const Page = () => {
             initialOpen={true}
           >
             <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-b-2xl">
-              <p className="mb-4 text-xl font-medium"> Beds : </p>
+              <p className="mb-4 text-xl font-medium"> เตียง : </p>
               <SelectUI
                 options={optionBeds}
                 selected={selectedbeds}
                 setSelected={setSelectedbeds}
               />
-              <p className="mt-6 mb-4 text-xl font-medium">Bathrooms :</p>
+              <p className="mt-6 mb-4 text-xl font-medium">ห้องอาบน้ำ :</p>
               <SelectUI
                 options={optionBathRooms}
                 selected={selectedbathRooms}
                 setSelected={setSelectedbathRooms}
               />
-              <p className="mt-6 mb-4 text-xl font-medium">Garages :</p>
+              {/* <p className="mt-6 mb-4 text-xl font-medium">Garages :</p>
               <SelectUI
                 options={optionGarages}
                 selected={selectedgarages}
                 setSelected={setSelectedgarages}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Person :</p>
+              /> */}
+              <p className="mt-6 mb-4 text-xl font-medium">คนเข้าพัก :</p>
               <SelectUI
                 options={optionPerson}
                 selected={selectedperson}
                 setSelected={setSelectedperson}
               />
-              <p className="mt-6 mb-4 text-xl font-medium">Area (sq ft) :</p>
+              <p className="mt-6 mb-4 text-xl font-medium">ขนาดห้อง (sq ft) :</p>
               <input
                 type="text"
                 className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
@@ -288,7 +288,7 @@ const Page = () => {
               value={location}
               onChange={(e) => setarea(e.target.value)}
             /> */}
-              <p className="mt-6 mb-4 text-xl font-medium">Property ID :</p>
+              <p className="mt-6 mb-4 text-xl font-medium">รหัสโรงแรม :</p>
               <input
                 type="text"
                 className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
@@ -296,7 +296,7 @@ const Page = () => {
                 value={propertyId}
                 onChange={(e) => setpropertyId(e.target.value)}
               />
-              <p className="mt-6 mb-4 text-xl font-medium">Type :</p>
+              <p className="mt-6 mb-4 text-xl font-medium">รูปแบบการขาย :</p>
               <input
                 type="text"
                 className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
@@ -312,7 +312,7 @@ const Page = () => {
                 value={area}
                 onChange={(e) => setarea(e.target.value)}
               /> */}
-              <p className="mt-6 mb-4 text-xl font-medium">Bedrooms :</p>
+              <p className="mt-6 mb-4 text-xl font-medium">ห้องนอน :</p>
               <input
                 type="text"
                 className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
@@ -320,7 +320,7 @@ const Page = () => {
                 value={bedRooms}
                 onChange={(e) => setbedRooms(e.target.value)}
               />
-              <p className="mt-6 mb-4 text-xl font-medium">Parking :</p>
+              <p className="mt-6 mb-4 text-xl font-medium">ที่จอดรถ :</p>
               <input
                 type="text"
                 className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
@@ -328,15 +328,15 @@ const Page = () => {
                 value={parking}
                 onChange={(e) => setparking(e.target.value)}
               />
-              <p className="mt-6 mb-4 text-xl font-medium">Dimensions :</p>
+              {/* <p className="mt-6 mb-4 text-xl font-medium">Dimensions :</p>
               <input
                 type="text"
                 className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
                 placeholder="0"
                 value={dimensions}
                 onChange={(e) => setdimensions(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Year Build :</p>
+              /> */}
+              <p className="mt-6 mb-4 text-xl font-medium">ปีที่สร้าง :</p>
               <input
                 type="text"
                 className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
@@ -352,7 +352,7 @@ const Page = () => {
             <Accordion
               buttonContent={(open) => (
                 <div className="rounded-2xl flex items-center justify-between">
-                  <h3 className="h3">Images & Video with Map </h3>
+                  <h3 className="h3">รูปภาพวีดิโอและแผนที่  </h3>
                   <ChevronDownIcon
                     className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                       open ? "rotate-180" : ""
@@ -363,7 +363,7 @@ const Page = () => {
               initialOpen={true}
             >
               <div className="pt-6">
-                <p className="mt-6 mb-4 text-xl font-medium">Image Address :</p>
+                <p className="mt-6 mb-4 text-xl font-medium">รูปภาพ :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md text-base"
@@ -371,7 +371,7 @@ const Page = () => {
                   value={image}
                   onChange={(e) => setimage(e.target.value)}
                 />
-                <p className="mt-6 mb-4 text-xl font-medium">Video Link :</p>
+                <p className="mt-6 mb-4 text-xl font-medium">วีดิโอ :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md text-base"
@@ -388,7 +388,7 @@ const Page = () => {
                     ></iframe>
                   </div>
                 </div>
-                <p className="mt-6 mb-4 text-xl font-medium">Address :</p>
+                <p className="mt-6 mb-4 text-xl font-medium">แผนที่ :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md text-base"
@@ -396,12 +396,13 @@ const Page = () => {
                   value={address}
                   onChange={(e) => setaddress(e.target.value)}
                 />
+                <p className="mt-6 mb-4 text-xl font-medium">ที่อยู่ :</p>
                  <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md text-base"
                   placeholder="Enter Location"
                   value={location}
-                  onChange={(e) => setaddress(e.target.value)}
+                  onChange={(e) => setilocation(e.target.value)}
                 />
               </div>
             </Accordion>
@@ -410,7 +411,7 @@ const Page = () => {
             <Accordion
               buttonContent={(open) => (
                 <div className="rounded-2xl flex items-center justify-between">
-                  <h3 className="h3">Amenities</h3>
+                  <h3 className="h3">สิ่งอำนวยความสะดวก</h3>
                   <ChevronDownIcon
                     className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                       open ? "rotate-180" : ""
@@ -450,7 +451,7 @@ const Page = () => {
               initialOpen={true}
             >
               <div className="pt-6">
-                <p className="mb-4 text-xl font-medium">Zip/Post Code :</p>
+                <p className="mb-4 text-xl font-medium">รหัสไปรษณี :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md text-base"
@@ -458,7 +459,7 @@ const Page = () => {
                   value={zipCode}
                   onChange={(e) => setzipCode(e.target.value)}
                 />
-                <p className="mt-6 mb-4 text-xl font-medium">Phone :</p>
+                <p className="mt-6 mb-4 text-xl font-medium">โทรศัพท์ :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md text-base"
@@ -474,7 +475,7 @@ const Page = () => {
                   value={fax}
                   onChange={(e) => setfax(e.target.value)}
                 />
-                <p className="mt-6 mb-4 text-xl font-medium">Email :</p>
+                <p className="mt-6 mb-4 text-xl font-medium">อีเมล :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md text-base"
@@ -482,7 +483,7 @@ const Page = () => {
                   value={email}
                   onChange={(e) => setemail(e.target.value)}
                 />
-                <p className="mt-6 mb-4 text-xl font-medium">Website :</p>
+                <p className="mt-6 mb-4 text-xl font-medium">เว็บไซต์ :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md text-base"

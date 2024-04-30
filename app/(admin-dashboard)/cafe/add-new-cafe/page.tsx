@@ -141,7 +141,7 @@ const Page = () => {
                   open ? "rounded-t-2xl" : "rounded-2xl"
                 } flex justify-between items-center p-4 md:p-6 lg:p-8 duration-500 bg-white`}
               >
-                <h3 className="h3">Resterong Information </h3>
+                <h3 className="h3">Cafe Information </h3>
                 <ChevronDownIcon
                   className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                     open ? "rotate-180" : ""
