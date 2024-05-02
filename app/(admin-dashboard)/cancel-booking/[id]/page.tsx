@@ -117,7 +117,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       image: image,
       videoLink: videoLink,
       address: address,
-      // features: amenitiesString,
+      features: amenitiesString,
       zipCode: zipCode,
       Phone: Phone,
       fax: fax,
@@ -125,7 +125,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       website: website,
       categoryId: selected.id,
       // features: features,
-      features: "[Gym, WiFi, Internet]",
+      // features: "[Gym, WiFi, Internet]",
        
       
 
