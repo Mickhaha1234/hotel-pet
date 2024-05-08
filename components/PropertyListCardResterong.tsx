@@ -20,6 +20,7 @@ const PropertyListCard = ({ item }: any) => {
     id,
     address,
     area,
+    description,
     bath,
     bed,
     img,
@@ -99,16 +100,16 @@ const PropertyListCard = ({ item }: any) => {
               <span className="inline-block truncate">{address}</span>
             </div>
             <Link
-              href="property-details-1"
+               href={`property-details-3/${id}`}
               className="text-xl font-medium text-neutral-700 pl-4">
               {title.substr(0, 20)}
             </Link>
             <ul className="flex flex-wrap divide-x divide-dashed justify-between mt-5 pl-3 mb-5">
               <li className="flex flex-col px-2 gap-1">
-                <i className="las la-city text-xl"></i>
-                <span className="block">{rooms} Room</span>
+                <i className="las la-book text-xl"></i>
+                <span className="block">{description} description</span>
               </li>
-              <li className="flex flex-col px-1 xxl:px-2 gap-1">
+              {/* <li className="flex flex-col px-1 xxl:px-2 gap-1">
                 <i className="las la-bed text-xl"></i>
                 <span className="block"> {bed} Bed </span>
               </li>
@@ -119,7 +120,7 @@ const PropertyListCard = ({ item }: any) => {
               <li className="flex flex-col px-1 xxl:px-2 gap-1">
                 <i className="las la-arrows-alt text-xl"></i>
                 <span className="block"> {area} sft </span>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="mx-3 md:mx-5">
@@ -129,9 +130,9 @@ const PropertyListCard = ({ item }: any) => {
             <div className="flex flex-wrap gap-3 justify-between items-center">
               <span className="text-primary text-xl font-medium">
               {price}฿
-                <span className="text-base text-neutral-700">/จาน</span>
+                <span className="text-base text-neutral-700">/แก้ว </span>
               </span>
-              <Link href="/property-details-1" className="btn-outline ">
+              <Link href={`property-details-3/${id}`} className="btn-outline ">
                 Read More
               </Link>
             </div>
