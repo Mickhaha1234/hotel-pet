@@ -145,6 +145,7 @@ const page = ({ params }: { params: { id: string } }) => {
     setdays(!roundedDiffInDays ? "0" : roundedDiffInDays.toString())
   }, [startDate, endDate])
   
+   
   console.log('days ', days);
   
 
@@ -168,6 +169,7 @@ const page = ({ params }: { params: { id: string } }) => {
                         value={startDate}
                         onChange={handleStartDateChange}
                         className="border"
+                        min={startDate}
                       />
                     </div>
                     <label htmlFor="endDate">End Date: </label>
@@ -178,6 +180,7 @@ const page = ({ params }: { params: { id: string } }) => {
                       value={endDate}
                       onChange={handleEndDateChange}
                       className="border"
+                      min={endDate}
                     />
                   </div>
                   <div className="col-span-12 md:col-span-4">
