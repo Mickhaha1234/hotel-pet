@@ -269,7 +269,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   return (
     <div className="bg-[var(--bg-2)]">
       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
-        <h2 className="h2 text-white">Edit Hotel</h2>
+        <h2 className="h2 text-white">Edit cafe</h2>
         <Link href="/add-property" className="btn-primary">
           <EyeIcon className="w-5 h-5" /> Edit cafe
         </Link>
@@ -329,7 +329,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   value={description}
                   onChange={(e) => setdescription(e.target.value)}
                 ></textarea>
-                <p className="mt-6 mb-4 text-xl font-medium">Tagline :</p>
+                {/* <p className="mt-6 mb-4 text-xl font-medium">Tagline :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md  text-base"
@@ -342,7 +342,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   options={optionTag}
                   selected={selectedtag}
                   setSelected={setSelectedtag}
-                />
+                /> */}
               </div>
             </div>
           </Accordion>

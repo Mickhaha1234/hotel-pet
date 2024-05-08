@@ -250,9 +250,9 @@ const Page = ({ params }: { params: { id: string } }) => {
   return (
     <div className="bg-[var(--bg-2)]">
       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
-        <h2 className="h2 text-white">Edit Hotel</h2>
+        <h2 className="h2 text-white">Edit resteruent</h2>
         <Link href="/add-property" className="btn-primary">
-          <EyeIcon className="w-5 h-5" /> Edit Hotel
+          <EyeIcon className="w-5 h-5" /> Edit restaurant
         </Link>
       </div>
       {/* statisticts */}
@@ -265,7 +265,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   open ? "rounded-t-2xl" : "rounded-2xl"
                 } flex justify-between items-center p-4 md:p-6 lg:p-8 duration-500 bg-white`}
               >
-                <h3 className="h3">Hotel Information </h3>
+                <h3 className="h3">restaurant Information </h3>
                 <ChevronDownIcon
                   className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                     open ? "rotate-180" : ""
@@ -277,14 +277,14 @@ const Page = ({ params }: { params: { id: string } }) => {
           >
             <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-b-2xl">
               <div className="border-t pt-4">
-                <p className="mb-4 text-xl font-medium">
-                  Choose Listing Category :
-                </p>
+                {/* <p className="mb-4 text-xl font-medium"> */}
+                  {/* Choose Listing Category : */}
+                {/* </p>
                 <SelectUI
                   options={optionCategory}
                   selected={selected}
                   setSelected={setSelected}
-                />
+                /> */}
                 <p className="mt-6 mb-4 text-xl font-medium">ชื่อ:</p>
                 <input
                   type="text"
@@ -310,7 +310,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   value={description}
                   onChange={(e) => setdescription(e.target.value)}
                 ></textarea>
-                <p className="mt-6 mb-4 text-xl font-medium">Tagline :</p>
+                {/* <p className="mt-6 mb-4 text-xl font-medium">Tagline :</p>
                 <input
                   type="text"
                   className="w-full border p-2 focus:outline-none rounded-md  text-base"
@@ -323,118 +323,11 @@ const Page = ({ params }: { params: { id: string } }) => {
                   options={optionTag}
                   selected={selectedtag}
                   setSelected={setSelectedtag}
-                />
+                /> */}
               </div>
             </div>
           </Accordion>
-          <Accordion
-            buttonContent={(open) => (
-              <div
-                className={`${
-                  open ? "rounded-t-2xl" : "rounded-2xl"
-                } flex justify-between items-center p-4 md:p-6 lg:p-8 mt-6 duration-500 bg-white`}
-              >
-                <h3 className="h3">Property Details </h3>
-                <ChevronDownIcon
-                  className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
-                    open ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            )}
-            initialOpen={true}
-          >
-            <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-b-2xl">
-              <p className="mb-4 text-xl font-medium"> Beds : </p>
-              <SelectUI
-                options={optionBeds}
-                selected={selectedbeds}
-                setSelected={setSelectedbeds}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Bathrooms :</p>
-              <SelectUI
-                options={optionBathRooms}
-                selected={selectedbathRooms}
-                setSelected={setSelectedbathRooms}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Garages :</p>
-              <SelectUI
-                options={optionGarages}
-                selected={selectedgarages}
-                setSelected={setSelectedgarages}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Person :</p>
-              <SelectUI
-                options={optionPerson}
-                selected={selectedperson}
-                setSelected={setSelectedperson}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Area (sq ft) :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="0"
-                value={area}
-                onChange={(e) => setarea(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Property ID :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="Enter ID"
-                value={propertyId}
-                onChange={(e) => setpropertyId(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Type :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="Enter type"
-                value={type}
-                onChange={(e) => settype(e.target.value)}
-              />
-              {/* <p className="mt-6 mb-4 text-xl font-medium">Area :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="Enter area"
-                value={area}
-                onChange={(e) => setarea(e.target.value)}
-              /> */}
-              <p className="mt-6 mb-4 text-xl font-medium">Bedrooms :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="06"
-                value={bedRooms}
-                onChange={(e) => setbedRooms(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Parking :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="3"
-                value={parking}
-                onChange={(e) => setparking(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Dimensions :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="0"
-                value={dimensions}
-                onChange={(e) => setdimensions(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Year Build :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="2023"
-                value={yearBuild}
-                onChange={(e) => setyearBuild(e.target.value)}
-              />
-            </div>
-          </Accordion>
+          
         </div>
         <div className="col-span-12 lg:col-span-6">
           <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8">
@@ -488,8 +381,8 @@ const Page = ({ params }: { params: { id: string } }) => {
               </div>
             </Accordion>
           </div>
-          <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6">
-            <Accordion
+          {/* <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6"> */}
+            {/* <Accordion
               buttonContent={(open) => (
                 <div className="rounded-2xl flex items-center justify-between">
                   <h3 className="h3">Amenities</h3>
@@ -515,8 +408,8 @@ const Page = ({ params }: { params: { id: string } }) => {
                   ))}
                 </ul>
               </div>
-            </Accordion>
-          </div>
+            </Accordion> */}
+           {/* </div> */}
           <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6">
             <Accordion
               buttonContent={(open) => (
@@ -597,7 +490,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             className="btn-primary font-semibold my-10"
             onClick={handleSubmit}
           >
-            <span className="inline-block"> Update Hotel</span>
+            <span className="inline-block"> Update restaurant</span>
           </button>
         </div>
       </section>
