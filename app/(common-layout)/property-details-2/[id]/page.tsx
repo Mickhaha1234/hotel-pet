@@ -223,18 +223,18 @@ const Page = ({ params }: { params: { id: string } }) => {
                       <li>
                       <div className="flex items-center gap-2">
                         <MapIcon className="w-5 h-5 text-[var(--secondary)]" />
-                        <p className="mb-0">{featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug">
+                        <p className="mb-0">{featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug text-2xl">
                       {featuredItems.location}
                       </h2>}</p>
                       </div>
                     </li>
                       <li>
                         <p className="mb-0">
-                          ID:{" "}
+                        ID:{" "}
                           <span className="text-primary">
-                          {featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug">
-                      {featuredItems.id}
-                      </h2>}
+                          {featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug text-2xl">
+                           {featuredItems.id}
+                         </h2>}
                           </span>
                         </p>
                       </li>

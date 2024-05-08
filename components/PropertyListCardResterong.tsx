@@ -130,7 +130,7 @@ const PropertyListCard = ({ item }: any) => {
             <div className="flex flex-wrap gap-3 justify-between items-center">
               <span className="text-primary text-xl font-medium">
               {price}฿
-                <span className="text-base text-neutral-700">/แก้ว </span>
+                <span className="text-base text-neutral-700">/จาน </span>
               </span>
               <Link href={`property-details-3/${id}`} className="btn-outline ">
                 Read More
