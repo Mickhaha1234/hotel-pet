@@ -77,14 +77,15 @@ const Page = ({ params }: { params: { id: string } }) => {
   const [website, setwebsite] = useState("");
   const [image, setimage] = useState("");
   const [ features, setfeatures] = useState("");
+ 
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const amenitiesString =
-      amenities.length > 0 ? `[${amenities.join(", ")}]` : "";
+    // const amenitiesString =
+    //   amenities.length > 0 ? `[${amenities.join(", ")}]` : "";
 
-    const payload = {
+    const payload  = {
       title: title,
       price: Number(price),
       description: description,
@@ -104,14 +105,15 @@ const Page = ({ params }: { params: { id: string } }) => {
       image: image,
       videoLink: videoLink,
       address: address,
-       features: amenitiesString,
+      //  features: amenitiesString,
       zipCode: zipCode,
       Phone: Phone,
       fax: fax,
       email: email,
       website: website,
       categoryId: selected.id,
-      // features: features,
+      "features": "[Gym, WiFi, Internet]"
+      //  features: features,
     
        
       
@@ -188,19 +190,6 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   };
 
-  // const handleAmenitiesChange = (e: any, item: any) => {
-  //   const checked = e.target.checked;
-  //   setamenities((prevAmenities: any) => {
-  //     if (checked) {
-  //       // If the checkbox is checked, add the item to the array
-  //       return [...prevAmenities, item];
-  //     } else {
-  //       // If the checkbox is unchecked, remove the item from the array
-  //       return prevAmenities.filter((amenity: any) => amenity !== item);
-  //     }
-  //   });
-  // };
-
   const handleAmenitiesChange = (e: any, item: any) => {
     const checked = e.target.checked;
     setamenities((prevAmenities: any) => {
@@ -209,10 +198,23 @@ const Page = ({ params }: { params: { id: string } }) => {
         return [...prevAmenities, item];
       } else {
         // If the checkbox is unchecked, remove the item from the array
-        return prevAmenities.filter((amenity: any) => amenity!== item);
+        return prevAmenities.filter((amenity: any) => amenity !== item);
       }
     });
   };
+
+  // const handleAmenitiesChange = (e: any, item: any) => {
+  //   const checked = e.target.checked;
+  //   setamenities((prevAmenities: any) => {
+  //     if (checked) {
+  //       // If the checkbox is checked, add the item to the array
+  //       return [...prevAmenities, item];
+  //     } else {
+  //       // If the checkbox is unchecked, remove the item from the array
+  //       return prevAmenities.filter((amenity: any) => amenity!== item);
+  //     }
+  //   });
+  // };
   
 
   useEffect(() => {
@@ -246,7 +248,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         setyearBuild(data.yearBuild);
         setvideoLink(data.videoLink);
         setaddress(data.address);
-        setamenities(data.features  );
+       setamenities(data.features  );
         setzipCode(data.zipCode);
         setPhone(data.Phone);
         setfax(data.fax);
@@ -269,7 +271,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
         <h2 className="h2 text-white">Edit Hotel</h2>
         <Link href="/add-property" className="btn-primary">
-          <EyeIcon className="w-5 h-5" /> Edit Hotel
+          <EyeIcon className="w-5 h-5" /> Edit cafe
         </Link>
       </div>
       {/* statisticts */}
@@ -282,7 +284,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   open ? "rounded-t-2xl" : "rounded-2xl"
                 } flex justify-between items-center p-4 md:p-6 lg:p-8 duration-500 bg-white`}
               >
-                <h3 className="h3">Hotel Information </h3>
+                <h3 className="h3">cafe Information </h3>
                 <ChevronDownIcon
                   className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                     open ? "rotate-180" : ""
@@ -344,114 +346,7 @@ const Page = ({ params }: { params: { id: string } }) => {
               </div>
             </div>
           </Accordion>
-          <Accordion
-            buttonContent={(open) => (
-              <div
-                className={`${
-                  open ? "rounded-t-2xl" : "rounded-2xl"
-                } flex justify-between items-center p-4 md:p-6 lg:p-8 mt-6 duration-500 bg-white`}
-              >
-                <h3 className="h3">Property Details </h3>
-                <ChevronDownIcon
-                  className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
-                    open ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            )}
-            initialOpen={true}
-          >
-            <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-b-2xl">
-              <p className="mb-4 text-xl font-medium"> Beds : </p>
-              <SelectUI
-                options={optionBeds}
-                selected={selectedbeds}
-                setSelected={setSelectedbeds}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Bathrooms :</p>
-              <SelectUI
-                options={optionBathRooms}
-                selected={selectedbathRooms}
-                setSelected={setSelectedbathRooms}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Garages :</p>
-              <SelectUI
-                options={optionGarages}
-                selected={selectedgarages}
-                setSelected={setSelectedgarages}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Person :</p>
-              <SelectUI
-                options={optionPerson}
-                selected={selectedperson}
-                setSelected={setSelectedperson}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Area (sq ft) :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="0"
-                value={area}
-                onChange={(e) => setarea(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Property ID :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="Enter ID"
-                value={propertyId}
-                onChange={(e) => setpropertyId(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Type :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="Enter type"
-                value={type}
-                onChange={(e) => settype(e.target.value)}
-              />
-              {/* <p className="mt-6 mb-4 text-xl font-medium">Area :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="Enter area"
-                value={area}
-                onChange={(e) => setarea(e.target.value)}
-              /> */}
-              <p className="mt-6 mb-4 text-xl font-medium">Bedrooms :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="06"
-                value={bedRooms}
-                onChange={(e) => setbedRooms(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Parking :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="3"
-                value={parking}
-                onChange={(e) => setparking(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Dimensions :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="0"
-                value={dimensions}
-                onChange={(e) => setdimensions(e.target.value)}
-              />
-              <p className="mt-6 mb-4 text-xl font-medium">Year Build :</p>
-              <input
-                type="text"
-                className="w-full border py-2 px-3 lg:px-4 focus:outline-none rounded-md text-base"
-                placeholder="2023"
-                value={yearBuild}
-                onChange={(e) => setyearBuild(e.target.value)}
-              />
-            </div>
-          </Accordion>
+         
         </div>
         <div className="col-span-12 lg:col-span-6">
           <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8">
@@ -505,7 +400,7 @@ const Page = ({ params }: { params: { id: string } }) => {
               </div>
             </Accordion>
           </div>
-          <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6">
+          {/* <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6">
             <Accordion
               buttonContent={(open) => (
                 <div className="rounded-2xl flex items-center justify-between">
@@ -533,7 +428,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                 </ul>
               </div>
             </Accordion>
-          </div>
+          </div> */}
           <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6">
             <Accordion
               buttonContent={(open) => (
@@ -614,7 +509,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             className="btn-primary font-semibold my-10"
             onClick={handleSubmit}
           >
-            <span className="inline-block"> Update Hotel</span>
+            <span className="inline-block"> Update cafe</span>
           </button>
         </div>
       </section>
