@@ -24,6 +24,7 @@ import { useRouter } from "next/navigation";
 // };
 
 const Page = ({ params }: { params: { id: string } }) => {
+  
   const router = useRouter();
   const optionCategory = [
     { name: "Hotel", id: 1 },
@@ -103,7 +104,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       image: image,
       videoLink: videoLink,
       address: address,
-      features: amenitiesString,
+       features: amenitiesString,
       zipCode: zipCode,
       Phone: Phone,
       fax: fax,
@@ -111,16 +112,16 @@ const Page = ({ params }: { params: { id: string } }) => {
       website: website,
       categoryId: selected.id,
       // features: features,
-      // "features": "[Gym, WiFi, Internet]",
+    
        
       
 
      
-      selectedTag: selectedtag.name,
-      selectedBeds: Number(selectedbeds.name),
-      selectedBathRooms: Number(selectedbathRooms.name),
-      selectedGarages: Number(selectedgarages.name),
-      selectedPerson: Number(selectedperson.name),
+      // selectedTag: selectedtag.name,
+      // selectedBeds: Number(selectedbeds.name),
+      // selectedBathRooms: Number(selectedbathRooms.name),
+      // selectedGarages: Number(selectedgarages.name),
+      // selectedPerson: Number(selectedperson.name),
      
       
       
@@ -160,8 +161,10 @@ const Page = ({ params }: { params: { id: string } }) => {
        
        
     // };
-
+     
     console.log(payload);
+    // console.log(payload1);
+
 
     try {
       const response = await fetch(`/api/cafe/${params.id}`, {
@@ -185,6 +188,19 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   };
 
+  // const handleAmenitiesChange = (e: any, item: any) => {
+  //   const checked = e.target.checked;
+  //   setamenities((prevAmenities: any) => {
+  //     if (checked) {
+  //       // If the checkbox is checked, add the item to the array
+  //       return [...prevAmenities, item];
+  //     } else {
+  //       // If the checkbox is unchecked, remove the item from the array
+  //       return prevAmenities.filter((amenity: any) => amenity !== item);
+  //     }
+  //   });
+  // };
+
   const handleAmenitiesChange = (e: any, item: any) => {
     const checked = e.target.checked;
     setamenities((prevAmenities: any) => {
@@ -193,10 +209,11 @@ const Page = ({ params }: { params: { id: string } }) => {
         return [...prevAmenities, item];
       } else {
         // If the checkbox is unchecked, remove the item from the array
-        return prevAmenities.filter((amenity: any) => amenity !== item);
+        return prevAmenities.filter((amenity: any) => amenity!== item);
       }
     });
   };
+  
 
   useEffect(() => {
     const fetchHotelById = async () => {
@@ -237,8 +254,8 @@ const Page = ({ params }: { params: { id: string } }) => {
         setwebsite(data.website);
         setimage(data.img[0]);
       } catch (error) {
-        console.error("Failed to fetch cafe:", error);
-        toast.error("Failed to fetch cafe");
+        console.error("Failed to fetch hotel:", error);
+        toast.error("Failed to fetch hotel");
       }
     };
 
@@ -250,9 +267,9 @@ const Page = ({ params }: { params: { id: string } }) => {
   return (
     <div className="bg-[var(--bg-2)]">
       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
-        <h2 className="h2 text-white">Edit Cafe</h2>
+        <h2 className="h2 text-white">Edit Hotel</h2>
         <Link href="/add-property" className="btn-primary">
-          <EyeIcon className="w-5 h-5" /> Edit Cafe
+          <EyeIcon className="w-5 h-5" /> Edit Hotel
         </Link>
       </div>
       {/* statisticts */}
@@ -265,7 +282,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   open ? "rounded-t-2xl" : "rounded-2xl"
                 } flex justify-between items-center p-4 md:p-6 lg:p-8 duration-500 bg-white`}
               >
-                <h3 className="h3">Cafe Information </h3>
+                <h3 className="h3">Hotel Information </h3>
                 <ChevronDownIcon
                   className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                     open ? "rotate-180" : ""

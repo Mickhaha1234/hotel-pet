@@ -138,7 +138,7 @@ const FeaturedCardPropertyList = ({ item }: any) => {
               ${price}
               <span className="text-base text-neutral-700"> /month </span>
             </span>
-            <Link href="property-details-1" className="btn-outline">
+            <Link href={`property-details-1/${id}`} className="btn-outline">
               Read More
             </Link>
           </div>

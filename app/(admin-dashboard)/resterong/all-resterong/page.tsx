@@ -136,7 +136,7 @@ const Page = () => {
                       <td className="py-3 lg:py-7 px-2 flex gap-2 items-center">
                         
                         <Link
-                        className="text-primary" href={`/restaurant/edit-restaurant/${id}`}>
+                        className="text-primary" href={`/resterong/edit-resterong/${id}`}>
                           <PencilSquareIcon className="w-5 h-5" />
                         </Link>
                         <button className="text-[var(--secondary-500)]" onClick={()=>onclickdelete(id)}>
