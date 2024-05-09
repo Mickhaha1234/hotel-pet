@@ -53,14 +53,19 @@ const page = ({ params }: { params: { id: string } }) => {
     img: [],
   });
 
-  const handleStartDateChange = (event: any) => {
-    setStartDate(event.target.value);
+  const handleStartDateChange = (event:any) => {
+    const selectedDate = new Date(event.target.value);
+    if (selectedDate >= new Date()) {
+      setStartDate(event.target.value);
+    }
   };
 
-  const handleEndDateChange = (event: any) => {
-    setEndDate(event.target.value);
+  const handleEndDateChange = (event:any) => {
+    const selectedDate = new Date(event.target.value);
+    if (selectedDate >= new Date()) {
+      setEndDate(event.target.value);
+    }
   };
-
   const handlePeopleChange = (event: any) => {
     setpeople(event.target.value);
 
@@ -133,17 +138,18 @@ const page = ({ params }: { params: { id: string } }) => {
     setsubTotal(featuredItems!.price.toString())
     settotalPrice(Number(Number(featuredItems!.price) * 1.15).toFixed(2).toString())
   }, [featuredItems?.price])
+
+  
   
   useEffect(() => {
-    const startDates = new Date(startDate);
-    const endDates = new Date(endDate);
-    const diffInMilliseconds =(endDates.getTime() - startDates.getTime()) as number;
-    const diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
-    const roundedDiffInDays = Math.round(diffInDays);
-    console.log(roundedDiffInDays); 
-    
-    setdays(!roundedDiffInDays ? "0" : roundedDiffInDays.toString())
-  }, [startDate, endDate])
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // JavaScript นับเดือนจาก 0
+    const day = String(today.getDate()).padStart(2, '0');
+    const todayDate = `${year}-${month}-${day}`;
+    setStartDate(todayDate);
+    setEndDate(todayDate);
+  }, []);
   
    
   console.log('days ', days);
