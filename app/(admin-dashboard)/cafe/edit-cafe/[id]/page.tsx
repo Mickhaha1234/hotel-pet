@@ -11,7 +11,7 @@ import Footer from "@/components/vendor-dashboard/Vendor.Footer";
 import CustomRangeSlider from "@/components/RangeSlider";
 import Accordion from "@/components/Accordion";
 import SelectUI from "@/components/SelectUI";
-import { propertyAmenities } from "@/public/data/addpropertyAmenities";
+// import { propertyAmenities } from "@/public/data/addpropertyAmenities";
 import CheckboxCustom from "@/components/Checkbox";
 import input from "postcss/lib/input";
 import toast, { Toaster } from "react-hot-toast";
@@ -69,7 +69,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   const [yearBuild, setyearBuild] = useState("");
   const [videoLink, setvideoLink] = useState("");
   const [address, setaddress] = useState("");
-  const [amenities, setamenities] = useState([]);
+  // const [amenities, setamenities] = useState([]);
   const [zipCode, setzipCode] = useState("");
   const [Phone, setPhone] = useState("");
   const [fax, setfax] = useState("");
@@ -89,19 +89,12 @@ const Page = ({ params }: { params: { id: string } }) => {
       title: title,
       price: Number(price),
       description: description,
-      tagLine: tagLine,
-      tag: selectedtag.name,
-      beds: Number(selectedbeds.name),
-      bathRooms: Number(selectedbathRooms.name),
-      garages: Number(selectedgarages.name),
-      person: Number(selectedperson.name),
+      
       area: Number(area),
-      propertyId: Number(propertyId),
-      type: type,
-      bedRooms: Number(bedRooms),
+    
+      
       parking: Number(parking),
-      dimensions: dimensions,
-      yearBuild: Number(yearBuild),
+      
       image: image,
       videoLink: videoLink,
       address: address,
@@ -112,7 +105,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       email: email,
       website: website,
       categoryId: selected.id,
-      "features": "[Gym, WiFi, Internet]"
+      // "features": "[Gym, WiFi, Internet]"
       //  features: features,
     
        
@@ -183,24 +176,11 @@ const Page = ({ params }: { params: { id: string } }) => {
 
     
       toast.success("Update completed");
-      router.push('/hotel/all-hotels')
+      router.push('/cafe/all-cafe')
     } catch (error) {
-      toast.error("Can't Update Hotel");
+      toast.error("Can't Update cafe");
     }
 
-  };
-
-  const handleAmenitiesChange = (e: any, item: any) => {
-    const checked = e.target.checked;
-    setamenities((prevAmenities: any) => {
-      if (checked) {
-        // If the checkbox is checked, add the item to the array
-        return [...prevAmenities, item];
-      } else {
-        // If the checkbox is unchecked, remove the item from the array
-        return prevAmenities.filter((amenity: any) => amenity !== item);
-      }
-    });
   };
 
   // const handleAmenitiesChange = (e: any, item: any) => {
@@ -211,7 +191,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   //       return [...prevAmenities, item];
   //     } else {
   //       // If the checkbox is unchecked, remove the item from the array
-  //       return prevAmenities.filter((amenity: any) => amenity!== item);
+  //       return prevAmenities.filter((amenity: any) => amenity !== item);
   //     }
   //   });
   // };
@@ -222,33 +202,26 @@ const Page = ({ params }: { params: { id: string } }) => {
       try {
         const response = await fetch(`/api/cafe/${params.id}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch hotel");
+          throw new Error("Failed to fetch cafe");
         }
         let data = await response.json();
         data=data.data[0]
         console.log(data);
         // Assuming the response structure matches your payload structure
         // Update your state with the fetched data
-        setSelected({ name: data.type, id: data.categoryId });
-        setSelectedtag({ name: data.tag });
-        setSelectedbeds({ name: data.beds });
-        setSelectedbathRooms({ name: data.bath });
-        setSelectedgarages({ name: data.garages });
-        setSelectedperson({ name: data.person });
+        
         settitle(data.title);
         setprice(data.price);
         setdescription(data.description);
-        settagLine(data.tagLine);
+        
         setarea(data.area);
-        setpropertyId(data.propertyId);
-        settype(data.type);
-        setbedRooms(data.bedRooms);
+       
+        
         setparking(data.parking);
-        setdimensions(data.dimensions);
-        setyearBuild(data.yearBuild);
+        
         setvideoLink(data.videoLink);
         setaddress(data.address);
-       setamenities(data.features  );
+      //  setamenities(data.features  );
         setzipCode(data.zipCode);
         setPhone(data.Phone);
         setfax(data.fax);
@@ -256,8 +229,8 @@ const Page = ({ params }: { params: { id: string } }) => {
         setwebsite(data.website);
         setimage(data.img[0]);
       } catch (error) {
-        console.error("Failed to fetch hotel:", error);
-        toast.error("Failed to fetch hotel");
+        console.error("Failed to fetch cafe:", error);
+        toast.error("Failed to fetch cafe");
       }
     };
 
@@ -296,14 +269,14 @@ const Page = ({ params }: { params: { id: string } }) => {
           >
             <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-b-2xl">
               <div className="border-t pt-4">
-                <p className="mb-4 text-xl font-medium">
+                {/* <p className="mb-4 text-xl font-medium">
                   Choose Listing Category :
                 </p>
                 <SelectUI
                   options={optionCategory}
                   selected={selected}
                   setSelected={setSelected}
-                />
+                /> */}
                 <p className="mt-6 mb-4 text-xl font-medium">ชื่อ:</p>
                 <input
                   type="text"
@@ -522,177 +495,3 @@ const Page = ({ params }: { params: { id: string } }) => {
 
 export default Page;
 
-// function setInputs(arg0: (values: any) => any) {
-//   throw new Error("Function not implemented.");
-// }
-//63
-
-// import React, { useState } from 'react';
-// import { EyeIcon } from '@heroicons/react/24/outline';
-// import Link from 'next/link';
-// import { useClient } from 'next/amp';
-
-// interface FormData {
-//   title: string;
-//   salePrice: number;
-//   description: string;
-// }
-
-// const AddPropertyPage: React.FC = () => {
-//   const [formData, setFormData] = useState<FormData>({
-//     title: '',
-//     salePrice: 0,
-//     description: '',
-//   });
-
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-//     setFormData({
-//       ...formData,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-//     try {
-//       const response = await fetch('/api/hotels', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(formData),
-//       });
-//       if (response.ok) {
-//         console.log('Hotel added successfully');
-//       } else {
-//         console.error('Failed to add hotel');
-//       }
-//     } catch (error) {
-//       console.error('Error:', error);
-//     }
-//   };
-
-//   return (
-//     <div className="bg-[var(--bg-2)]">
-//       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
-//         <h2 className="h2 text-white">Add New Hotel</h2>
-//         <Link href="/add-property" className="btn-primary">
-//           <EyeIcon className="w-5 h-5" /> View All Hotel
-//         </Link>
-//       </div>
-//       {/* Form */}
-//       <section className="grid z-[1] grid-cols-12 gap-4 mb-6 lg:gap-6 px-3 md:px-6 bg-[var(--bg-2)] relative after:absolute after:bg-[var(--dark)] after:w-full after:h-[60px] after:top-0 after:left-0 after:z-[-1] pb-10 xxl:pb-0">
-//         <div className="col-span-12 lg:col-span-6">
-//           <form onSubmit={handleSubmit} className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-2xl">
-//             <div className="border-t pt-4">
-//               <p className="mb-4 text-xl font-medium">Title:</p>
-//               <input
-//                 type="text"
-//                 name="title"
-//                 value={formData.title}
-//                 onChange={handleChange}
-//                 className="w-full border p-2 focus:outline-none rounded-md text-base"
-//                 placeholder="Write Title"
-//               />
-//               <p className="mt-6 mb-4 text-xl font-medium">Sale Price:</p>
-//               <input
-//                 type="number"
-//                 name="salePrice"
-//                 value={formData.salePrice}
-//                 onChange={handleChange}
-//                 className="w-full border p-2 focus:outline-none rounded-md text-base"
-//                 placeholder="Enter Sale Price"
-//               />
-//               <p className="mt-6 mb-4 text-xl font-medium">Description :</p>
-//               <textarea
-//                 name="description"
-//                 value={formData.description}
-//                 onChange={handleChange}
-//                 rows={5}
-//                 className="w-full border p-2 focus:outline-none rounded-md "
-//                 placeholder="Description.."
-//               ></textarea>
-//               <button type="submit" className="btn-primary mt-6">Submit</button>
-//             </div>
-//           </form>
-//         </div>
-//       </section>
-//     </div>import React, { useState } from 'react';
-
-// //666
-// import React, { ChangeEvent, FormEvent, useState } from 'react';
-// import { useClient } from 'next/amp';
-
-// const Page = () => {
-//   const [formData, setFormData] = useState({
-//     title: '',
-//     salePrice: 0,
-//     description: '',
-//   });
-
-//   // ใช้ useClient เพื่อบอก Next.js ว่าตัว Component นี้เป็น Client Component
-//   useClient();
-
-//   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-//     setFormData({
-//       ...formData,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
-//     throw new Error('Function not implemented.');
-//   }
-
-//   return (
-//     <div className="bg-[var(--bg-2)]">
-//       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
-//         <h2 className="h2 text-white">Add New Hotelll</h2>
-//         <Link href="/add-property" className="btn-primary">
-//           <EyeIcon className="w-5 h-5" /> View All Hotel
-//         </Link>
-//       </div>
-//       {/* statisticts */}
-//       <section className="grid z-[1] grid-cols-12 gap-4 mb-6 lg:gap-6 px-3 md:px-6 bg-[var(--bg-2)] relative after:absolute after:bg-[var(--dark)] after:w-full after:h-[60px] after:top-0 after:left-0 after:z-[-1] pb-10 xxl:pb-0">
-//         <div className="col-span-12 lg:col-span-6">
-//           <form onSubmit={handleSubmit} className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-2xl">
-//             <div className="border-t pt-4">
-//               <p className="mb-4 text-xl font-medium">Title:</p>
-//               <input
-//                 type="text"
-//                 name="title"
-//                 value={formData.title}
-//                 onChange={handleChange}
-//                 className="w-full border p-2 focus:outline-none rounded-md text-base"
-//                 placeholder="Write Title"
-//               />
-//               <p className="mt-6 mb-4 text-xl font-medium">Sale Price:</p>
-//               <input
-//                 type="number"
-//                 name="salePrice"
-//                 value={formData.salePrice}
-//                 onChange={handleChange}
-//                 className="w-full border p-2 focus:outline-none rounded-md text-base"
-//                 placeholder="Enter Sale Price"
-//               />
-//               <p className="mt-6 mb-4 text-xl font-medium">Description :</p>
-//               <textarea
-//                 name="description"
-//                 value={formData.description}
-//                 onChange={handleChange}
-//                 rows={5}
-//                 className="w-full border p-2 focus:outline-none rounded-md "
-//                 placeholder="Description.."
-//               ></textarea>
-//               <button type="submit" className="btn-primary mt-6">Submit</button>
-//             </div>
-//           </form>
-//         </div>
-//       </section>
-//       {/* Footer */}
-//       <Footer />
-//     </div>
-//   );
-// };
-
-// export default Page;

@@ -3,10 +3,11 @@
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 interface FeaturedItem {
+  location: ReactNode;
   id: number;
   title: string | undefined;
   address: string;
@@ -35,7 +36,8 @@ const page = ({ params }: { params: { id: string } }) => {
   const [subTotal, setsubTotal] = useState("");
   const [totalPrice, settotalPrice] = useState("");
   const [days, setdays] = useState("0");
-  const [featuredItems, setFeaturedItems] = useState<FeaturedItem | undefined>({
+  const [location,setlocation]= useState("");
+   const [featuredItems, setFeaturedItems] = useState<FeaturedItem | undefined>({
     id: 1,
     title: "",
     address: "",
@@ -44,12 +46,14 @@ const page = ({ params }: { params: { id: string } }) => {
     bed: 1,
     bath: 1,
     area: "",
+    location: "",
     price: "",
     videoLink: "www.google.com",
     favourite: true,
     popular: true,
     yearBuild: "",
     description: "",
+    
     img: [],
   });
 
@@ -94,6 +98,7 @@ const page = ({ params }: { params: { id: string } }) => {
       startDate: startDate,
       endDate: endDate,
       people: people,
+      location:location,
     };
 
     try {
@@ -202,15 +207,24 @@ const page = ({ params }: { params: { id: string } }) => {
                   </div>
                 </div>
                 <div className="flex flex-wrap border items-center rounded-2xl">
-                  <div className="rounded-2xl p-2">
-                    <Image
-                      width={347}
-                      height={243}
-                      src="/img/featured-img-1.jpg"
-                      alt="image"
-                      className=" w-full rounded-2xl"
-                    />
-                  </div>
+                {featuredItems?.img.map((img) => {
+                  return (
+                    
+                      <Link
+                        href="/img/property-gallery-slider-1.jpg"
+                        className="link property-gallery"
+                      >
+                        <Image
+                          width={574}
+                          height={558}
+                          src={img}
+                          alt="image"
+                          className=""
+                        />
+                      </Link>
+                    
+                  );
+                })}
 
                   <div className="p-4">
                     <div className="property-card__body">
@@ -223,7 +237,7 @@ const page = ({ params }: { params: { id: string } }) => {
                       <div className="flex justify-between gap-3">
                         <div className="flex items-center gap-1">
                           <i className="las la-map-marker-alt text-xl text-[#22804A]"></i>
-                          <span className="inline-block"> United States </span>
+                          <span className="inline-block"> {featuredItems!.location} </span>
                         </div>
                         <div className="flex items-center gap-1">
                           <i className="las la-star text-xl text-[var(--tertiary)]"></i>
@@ -238,25 +252,25 @@ const page = ({ params }: { params: { id: string } }) => {
                           <span className="material-symbols-outlined mat-icon clr-neutral-600 inline-block mb-1">
                             home_work
                           </span>
-                          <span className="block text-sm"> 3 Room </span>
+                          <span className="block text-sm">{featuredItems!.rooms} room </span>
                         </li>
                         <li>
                           <span className="material-symbols-outlined mat-icon clr-neutral-600 inline-block mb-1">
                             bed
                           </span>
-                          <span className="block text-sm"> 5 Bed </span>
+                          <span className="block text-sm"> {featuredItems!.bed} Bed </span>
                         </li>
                         <li>
                           <span className="material-symbols-outlined mat-icon clr-neutral-600 inline-block mb-1">
                             bathtub
                           </span>
-                          <span className="block text-sm"> 1 Bath </span>
+                          <span className="block text-sm"> {featuredItems!.bath} Bath </span>
                         </li>
                         <li>
                           <span className="material-symbols-outlined mat-icon clr-neutral-600 inline-block mb-1">
                             drag_pan
                           </span>
-                          <span className="block text-sm"> 732 sft </span>
+                          <span className="block text-sm"> {featuredItems!.area} sft </span>
                         </li>
                       </ul>
                     </div>
@@ -271,7 +285,7 @@ const page = ({ params }: { params: { id: string } }) => {
                 <div className="flex flex-wrap gap-4 justify-between items-center">
                   <p className="mb-0">
                     Transaction ID:
-                    <span className="text-primary">25246584</span>
+                    <span className="text-primary"></span>
                   </p>
                   <p className="mb-0">
                     Total Payable Amount:

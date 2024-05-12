@@ -8,10 +8,10 @@ export async function GET() {
         cafeId: true,
         title: true,
 
-       
+       videoLink: true,
         price: true,
         location: true,
-    
+         address: true,
         image: true,
       },
     });
@@ -24,6 +24,8 @@ export async function GET() {
       id: cafe.cafeId,
       title: cafe.title,
       location: cafe.location,
+      address: cafe.address,
+      videoLink:cafe. videoLink,
       
       
       price: cafe.price ? cafe.price.toLocaleString() : "N/A",
@@ -52,7 +54,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const { price, description, image, email, website, parking, title, Phone ,location} = await req.json();
+  const { price, description, image, email, website, parking, title, Phone ,location, videoLink,address} = await req.json();
   try {
     const newCafe = await prisma.cafe.create({
       data: {
@@ -65,6 +67,8 @@ export async function POST(req: NextRequest) {
         title: title,
         Phone: Phone,
         location: location,
+        videoLink: videoLink,
+        address:address,
       },
     });
     return NextResponse.json(

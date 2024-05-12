@@ -98,6 +98,9 @@ model Restaurant {
   title       String?
   Phone       String?
   location    String?
+  address     String?
+  videoLink   String?
+  features   String?
 
 }
 model Cafe {
@@ -109,8 +112,11 @@ model Cafe {
   website     String?
   parking     Int?
   title       String?
+  address     String?
+  videoLink   String?
   Phone       String?
   location    String?
+  features   String?
 
 }
 model Booking {

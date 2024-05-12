@@ -80,12 +80,15 @@ const Page = () => {
     const payload = {
       price: Number(price),
       description: description,
+      location:location,
       image: image,
       email: email,
       website: website,
       parking: Number(parking),
       title: title,
       Phone: Phone,
+      videoLink:videoLink,
+      address:address,
     };
 
     console.log(payload);

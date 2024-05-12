@@ -1,47 +1,4 @@
-// import prisma from "@/lib/prisma";
-// import { NextRequest, NextResponse } from "next/server";
 
-// export async function GET(req: NextRequest, { params }: { params: { id: string}}) {
-//   const id = params.id;
-//   try {
-//     const restaurant = await prisma.restaurant.findMany({
-//       where: {
-//         restaurantId: Number(id),
-//       }
-//     });
-
-//     // Transform the data to match the desired structure
-//     const transformedrestaurant = restaurant.map((restaurant) => ({
-//       id: restaurant.restaurantId,
-//       title: restaurant.title,
-      
-//       price: restaurant.price ? restaurant.price.toLocaleString() : "N/A",
-//       favourite: false,
-//       popular: true,
-  
-//       description: restaurant.description,
-//       img: restaurant.image ? [restaurant.image] : ["/img/featured-img-1.jpg"],
-//     }));
-
-//     return NextResponse.json(
-//       {
-//         message: "Ok",
-//         data: transformedrestaurant,
-//       },
-//       { status: 200 }
-//     );
-//   } catch (error) {
-//     return NextResponse.json(
-//       {
-//         message: "Failed to fetch Hotels",
-//         error,
-//       },
-//       {
-//         status: 500,
-//       }
-//     );
-//   }
-// }
 
 
 import prisma from "@/lib/prisma";
@@ -61,6 +18,8 @@ export async function GET(req: NextRequest, { params }: { params: { id: string}}
       id: restaurant.restaurantId,
       title: restaurant.title,
       location: restaurant.location,
+      address: restaurant.address,
+      videoLink: restaurant.videoLink,
     
      
       
@@ -161,71 +120,3 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
      );
   }
  }
-
-// import prisma from "@/lib/prisma";
-// import { NextRequest, NextResponse } from "next/server";
-
-// export async function GET() {
-//   try {
-//     const restaurant = await prisma.restaurant.findMany();
-
-//     const transRestaurant = restaurant.map((v) => ({
-//       ...v,
-//       img: v.image ? [v.image] : ["/img/featured-img-1.jpg"],
-//     }));
-
-//     return NextResponse.json(
-//       {
-//         message: "Ok",
-//         data: transRestaurant,
-//       },
-//       { status: 200 }
-//     );
-//   } catch (error) {
-//     return NextResponse.json(
-//       {
-//         message: "Failed to fetch Restaurant",
-//         error,
-//       },
-//       {
-//         status: 500,
-//       }
-//     );
-//   }
-// }
-
-// export async function POST(req: NextRequest) {
-//   const { price, description, image, email, website, parking, title, Phone } = await req.json();
-//   try {
-//     const newRestaurant = await prisma.restaurant.create({
-//       data: {
-//         price: Number(price),
-//         description: description,
-//         image: image,
-//         email: email,
-//         website: website,
-//         parking: Number(parking),
-//         title: title,
-//         Phone: Phone,
-//       },
-//     });
-//     return NextResponse.json(
-//       {
-//         message: "Restaurant created successfully",
-//         data: newRestaurant,
-//       },
-//       { status: 200 }
-//     );
-//   } catch (error) {
-//     return NextResponse.json(
-//       {
-//         message: "Failed to Create a Restaurant",
-//         error,
-//       },
-//       {
-//         status: 500,
-//       }
-//     );
-//   }
-// }
-

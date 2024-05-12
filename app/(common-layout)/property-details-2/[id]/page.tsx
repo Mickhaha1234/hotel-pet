@@ -35,7 +35,7 @@ function classNames(...classes: any[]) {
 }
 
 interface FeaturedItem {
-  id: number;
+  id: number| null;
   title: string | undefined;
   address: string;
   rooms: number;
@@ -65,7 +65,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     bath: 1,
     area: "",
     price: "",
-    videoLink: "www.google.com",
+    videoLink: "www.youtube.com",
     favourite: true,
     popular: true,
     yearBuild: "",
@@ -215,26 +215,27 @@ const Page = ({ params }: { params: { id: string } }) => {
                       </ul>
                     </div>
                     <h2 className="mt-4 h2 mb-8 leading-snug">
-                    {featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug">
-                      {featuredItems.title}
-                      </h2>}
+                    {featuredItems?.title || "No title"}
                     </h2>
+
                     <ul className="flex flex-wrap items-center gap-4 gap-md-0">
                       <li>
-                      <div className="flex items-center gap-2">
-                        <MapIcon className="w-5 h-5 text-[var(--secondary)]" />
-                        <p className="mb-0">{featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug text-2xl">
-                      {featuredItems.location}
-                      </h2>}</p>
-                      </div>
-                    </li>
+                        <div className="flex items-center gap-2">
+                          <MapIcon className="w-5 h-5 text-[var(--secondary)]" />
+                          <p className="mb-0">
+                            {featuredItems && (
+                              <h2 className="mt-4 h2 mb-8 leading-snug text-2xl">
+                                {featuredItems.location}
+                              </h2>
+                            )}
+                          </p>
+                        </div>
+                      </li>
                       <li>
                         <p className="mb-0">
-                        ID:{" "}
+                          ID:{" "}
                           <span className="text-primary">
-                          {featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug text-2xl">
-                           {featuredItems.id}
-                         </h2>}
+                          {featuredItems?.id || "No title"}
                           </span>
                         </p>
                       </li>
@@ -252,7 +253,6 @@ const Page = ({ params }: { params: { id: string } }) => {
                       </li>
                     </ul>
                     <div className="border-b border-dashed my-8"></div>
-                    
                   </div>
                   <div className="p-3 sm:p-4 md:p-6 bg-[var(--bg-1)] rounded-2xl border border-neutral-40 mb-6 md:mb-10">
                     <h4 className="mb-5 text-2xl font-semibold">
@@ -260,9 +260,9 @@ const Page = ({ params }: { params: { id: string } }) => {
                       Description{" "}
                     </h4>
                     <p className="mb-5 clr-neutral-500">
-                    {featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug">
-                      {featuredItems.description}
-                      </h2>}
+                   
+                          {featuredItems?.description}
+                       
                     </p>
                     <Link
                       href="#"
@@ -274,15 +274,15 @@ const Page = ({ params }: { params: { id: string } }) => {
                       <i className="las la-long-arrow-alt-right text-xl"></i>
                     </Link>
                   </div>
-                 
+
                   <div className="p-3 sm:p-4 md:p-6 bg-[var(--bg-1)] rounded-2xl border border-neutral-40 mb-6 md:mb-10">
                     <h4 className="mb-5 text-2xl font-semibold">
                       {" "}
                       Property Video{" "}
                     </h4>
-                    {/* <div className="bg-white p-1 rounded-2xl overflow-hidden relative h-[462px] z-[1]">
+                    <div className="bg-white p-1 rounded-2xl overflow-hidden relative h-[462px] z-[1]">
                       <ReactPlayer
-                        url={featuredItems!.videoLink}
+                        url={featuredItems?.videoLink}
                         controls
                         light="/img/property-video-img.jpg"
                         playIcon={<Play />}
@@ -291,9 +291,10 @@ const Page = ({ params }: { params: { id: string } }) => {
                         width="100%"
                         height="100%"
                       />
-                    </div> */}
+                    </div>
                   </div>
-                  {/* <div className="p-3 sm:p-4 md:p-6 bg-[var(--bg-1)] rounded-2xl border border-neutral-40 mb-6 md:mb-10">
+
+                  <div className="p-3 sm:p-4 md:p-6 bg-[var(--bg-1)] rounded-2xl border border-neutral-40 mb-6 md:mb-10">
                     <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
                       <h4 className="mb-0 text-2xl font-semibold">
                         {" "}
@@ -314,7 +315,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                         src={featuredItems!.address}
                       ></iframe>
                     </div>
-                  </div> */}
+                  </div>   
 
                   <div className="flex items-center justify-between gap-4 flex-wrap">
                     <Link
@@ -372,8 +373,6 @@ const Page = ({ params }: { params: { id: string } }) => {
                   </div>
                 </div>
               </div>
-
-              
 
               <div>
                 <div className="bg-white rounded-2xl py-8 px-5">
@@ -451,239 +450,57 @@ const Page = ({ params }: { params: { id: string } }) => {
                     <div className="flex gap-3 items-center">
                       <i className="las la-tag text-2xl"></i>
                       <p className="mb-0"> From </p>
-                      <h3 className="h3 mb-0"> {featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug">
-                      {featuredItems.price}
-                      </h2>}฿ </h3>
+                      <h3 className="h3 mb-0">
+                        {" "}
+                        
+                         
+                            {featuredItems?.price}
+                        
+                       
+                        ฿{" "}
+                      </h3>
                     </div>
                     <i className="las la-info-circle text-2xl"></i>
                   </div>
                   <Tab.Group>
-                  {/* <Tab.List className="flex gap-4">
-                    <Tab
-                      className={({ selected }) =>
-                        classNames(
-                          "focus:outline-none",
-                          selected ? "text-primary" : ""
-                        )
-                      }
-                    >
-                      Booking Form
-                    </Tab>{" "}
-                    |
-                    <Tab
-                      className={({ selected }) =>
-                        classNames(
-                          "focus:outline-none",
-                          selected ? "text-primary" : ""
-                        )
-                      }
-                    >
-                      Enquiry Form
-                    </Tab>
-                  </Tab.List> */}
-                  <Tab.Panels className="mt-5">
-                    <Tab.Panel
-                      className="tab-pane fade show active"
-                      id="booking-list"
-                    >
-                      {/* <div className="flex bg-[var(--bg-1)] gap-3 py-4 px-8 rounded-full border border-neutral-40 mb-4">
-                        <i className="las la-calendar text-3xl text-gray-500"></i>
-                        <div className="flex-grow">
-                          <p className="mb-1">Feb 17 - Feb 25</p>
-                          <p className="mb-0 text-xs clr-neutral-400">
-                            Check in - Check out
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex bg-[var(--bg-1)] gap-3 py-4 px-8 rounded-full border border-neutral-40">
-                        <i className="las la-user-friends text-3xl text-gray-500"></i>
-                        <div className="flex-grow">
-                          <p className="mb-1">6 Guests</p>
-                          <p className="mb-0 text-xs clr-neutral-400">
+                 
+                    <Tab.Panels className="mt-5">
+                      <Tab.Panel
+                        className="tab-pane fade show active"
+                        id="booking-list"
+                      >
+                        
+                        <div className="border border-dashed my-4"></div>
+                        <div className="flex items-center justify-between">
+                          <p className="mb-0 clr-neutral-500"> ราคา </p>
+                          <p className="mb-0 font-medium">
                             {" "}
-                            Guests{" "}
+                            {featuredItems?.price}
+                            ฿ / แก้ว {" "}
                           </p>
                         </div>
-                      </div> */}
-                      {/* <div className="flex items-center justify-between my-4">
-                        <p className="mb-0 clr-neutral-500">
-                          {" "}
-                          ฿25,976x 4 night{" "}
-                        </p>
-                        <p className="mb-0 font-medium"> ฿103,904 </p>
-                      </div> */}
-                      {/* <div className="flex items-center justify-between">
-                        <p className="mb-0 clr-neutral-500"> Service charge </p>
-                        <p className="mb-0 font-medium"> ฿20,780 </p>
-                      </div> */}
-                      <div className="border border-dashed my-4"></div>
-                      <div className="flex items-center justify-between">
-                        <p className="mb-0 clr-neutral-500"> Total </p>
-                        <p className="mb-0 font-medium">  {featuredItems && <h2 className="mt-4 h2 mb-8 leading-snug">
-                      {featuredItems.price}
-                      </h2>}฿ </p>
-                      </div>
-                    </Tab.Panel>
-                    {/* <Tab.Panel className="tab-pane fade" id="enquiry-list">
-                      <form className="flex flex-col gap-5">
-                        <input
-                          type="text"
-                          placeholder="Name..."
-                          className="w-full rounded-full bg-[var(--bg-1)] border focus:outline-none py-2 px-3 md:py-3 md:px-4"
-                          required
-                        />
-                        <input
-                          type="email"
-                          placeholder="Email..."
-                          className="w-full rounded-full bg-[var(--bg-1)] border focus:outline-none py-2 px-3 md:py-3 md:px-4"
-                          required
-                        />
-                        <textarea
-                          rows={6}
-                          placeholder="Message..."
-                          className="w-full rounded-3xl bg-[var(--bg-1)] border focus:outline-none py-2 px-3 md:py-3 md:px-4"
-                        ></textarea>
-                        <CheckboxCustom label="I agree with Terms of Service and Privacy Statement" />
-                      </form>
-                    </Tab.Panel> */}
-                  </Tab.Panels>
-                </Tab.Group>
+                      </Tab.Panel>
+                      
+                    </Tab.Panels>
+                  </Tab.Group>
 
-                <Link
-                  href={`/payment-method/${params.id}`}
-                  className="btn-primary flex items-center justify-center my-6"
-                >
-                  Proceed Booking
-                </Link>
-                <ul className="flex justify-center gap-6">
-                  <li>
-                    {/* <div className="flex items-center gap-2">
-                      <button className="w-7 h-7 rounded-full bg-[var(--primary-light)] text-primary grid place-content-center">
-                        <HeartIcon className="w-5 h-5" />
-                      </button>
-                      <span className="inline-block text-sm clr-neutral-500">
-                        Save To Wish List
-                      </span>
-                    </div> */}
-                  </li>
-                  <li>
-                    <div className="flex items-center gap-2">
-                      <button className="w-7 h-7 rounded-full bg-[var(--primary-light)] text-primary grid place-content-center">
-                        <ArrowsRightLeftIcon className="w-5 h-5" />
-                      </button>
-                      {/* <span className="inline-block text-sm clr-neutral-500">
+               
+                  <ul className="flex justify-center gap-6">
+                  
+                    <li>
+                      <div className="flex items-center gap-2">
+                        <button className="w-7 h-7 rounded-full bg-[var(--primary-light)] text-primary grid place-content-center">
+                          <ArrowsRightLeftIcon className="w-5 h-5" />
+                        </button>
+                        {/* <span className="inline-block text-sm clr-neutral-500">
                         Compare
                       </span> */}
-                    </div>
-                  </li>
-                </ul>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* <div className="bg-white rounded-2xl py-8 px-6">
-              <div className="w-32 h-32 border border-[var(--primary)] rounded-full bg-white p-4 grid place-content-center relative mx-auto mb-10">
-                <Image
-                  width={96}
-                  height={96}
-                  src="/img/team-1.jpg"
-                  alt="image"
-                  className="rounded-full"
-                />
-                <div className="w-8 h-8 grid place-content-center rounded-full border-2 white text-white bg-primary absolute bottom-0 right-0">
-                  <CheckIcon className="w-5 h-5" />
-                </div>
-              </div>
-              <h4 className="text-center text-2xl font-semibold mb-4">
-                {" "}
-                Savannah Nguyen{" "}
-              </h4>
-              <ul className="flex items-center gap-3 justify-center flex-wrap mb-7">
-                <li>
-                  <p className="mb-0">
-                    ID: <span className="text-primary">235</span>
-                  </p>
-                </li>
-                <li className="text-primary text-lg">•</li>
-                <li>
-                  <p className="mb-0"> Property: 24 </p>
-                </li>
-                <li className="text-primary text-lg">•</li>
-                <li>
-                  <div className="flex gap-1 items-center">
-                    <i className="las la-star text-[var(--tertiary)]"></i>
-                    <p className="mb-0"> 4.8 </p>
-                  </div>
-                </li>
-              </ul>
-              <ul className="flex justify-center flex-wrap gap-3">
-                <li>
-                  <Link
-                    href="#"
-                    className="link grid place-content-center duration-300 w-9 h-9 rounded-full bg-[var(--primary-light)] text-primary hover:bg-primary hover:text-white"
-                  >
-                    <i className="lab la-facebook-f text-xl"></i>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="link grid place-content-center duration-300 w-9 h-9 rounded-full bg-[var(--primary-light)] text-primary hover:bg-primary hover:text-white"
-                  >
-                    <i className="lab la-twitter text-xl"></i>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="link grid place-content-center duration-300 w-9 h-9 rounded-full bg-[var(--primary-light)] text-primary hover:bg-primary hover:text-white"
-                  >
-                    <i className="lab la-instagram text-xl"></i>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="link grid place-content-center duration-300 w-9 h-9 rounded-full bg-[var(--primary-light)] text-primary hover:bg-primary hover:text-white"
-                  >
-                    <i className="lab la-linkedin-in text-xl"></i>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="link grid place-content-center duration-300 w-9 h-9 rounded-full bg-[var(--primary-light)] text-primary hover:bg-primary hover:text-white"
-                  >
-                    <i className="lab la-dribbble text-xl"></i>
-                  </Link>
-                </li>
-              </ul>
-              <div className="border border-dashed my-7"></div>
-              <ul className="flex flex-col gap-4 mb-10 max-text-30 mx-auto">
-                <li>
-                  <div className="flex items-center gap-2">
-                    <CalendarDaysIcon className="w-5 h-5 text-primary" />
-                    <p className="mb-0"> Joined in June 2018 </p>
-                  </div>
-                </li>
-                <li>
-                  <div className="flex items-center gap-2">
-                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-[var(--secondary)]" />
-                    <p className="mb-0"> Response rate - 100% </p>
-                  </div>
-                </li>
-                <li>
-                  <div className="flex items-center gap-2">
-                    <ClockIcon className="w-5 h-5 text-[var(--tertiary)]" />
-                    <p className="mb-0"> Fast response </p>
-                  </div>
-                </li>
-              </ul>
-              <div className="text-center">
-                <Link href="#" className="btn-outline  font-semibold">
-                  See Host Profile
-                </Link>
-              </div>
-            </div> */}
             </div>
           </div>
         </div>

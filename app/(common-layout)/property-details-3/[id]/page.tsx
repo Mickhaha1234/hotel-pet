@@ -437,7 +437,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                       {" "}
                       Property Video{" "}
                     </h4>
-                    {/* <div className="bg-white p-1 rounded-2xl overflow-hidden relative h-[462px] z-[1]">
+                     <div className="bg-white p-1 rounded-2xl overflow-hidden relative h-[462px] z-[1]">
                       <ReactPlayer
                         url={featuredItems!.videoLink}
                         controls
@@ -448,9 +448,9 @@ const Page = ({ params }: { params: { id: string } }) => {
                         width="100%"
                         height="100%"
                       />
-                    </div> */}
+                    </div> *
                   </div>
-                  {/* <div className="p-3 sm:p-4 md:p-6 bg-[var(--bg-1)] rounded-2xl border border-neutral-40 mb-6 md:mb-10">
+                  <div className="p-3 sm:p-4 md:p-6 bg-[var(--bg-1)] rounded-2xl border border-neutral-40 mb-6 md:mb-10">
                     <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
                       <h4 className="mb-0 text-2xl font-semibold">
                         {" "}
@@ -471,7 +471,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                         src={featuredItems!.address}
                       ></iframe>
                     </div>
-                  </div> */}
+                  </div> 
                   <div className="p-3 sm:p-4 md:p-6 bg-[var(--bg-1)] rounded-2xl border border-neutral-40 mb-6 md:mb-10">
                     <h4 className="mb-5 text-2xl font-semibold">
                       {" "}

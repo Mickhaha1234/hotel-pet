@@ -72,6 +72,7 @@ const Page = () => {
   const [fax, setfax] = useState("");
   const [email, setemail] = useState("");
   const [website, setwebsite] = useState("");
+
   const [image, setimage] = useState("");
 
   const handleSubmit = async (e: any) => {
@@ -86,6 +87,9 @@ const Page = () => {
       parking: Number(parking),
       title: title,
       Phone: Phone,
+      videoLink:videoLink,
+      address:address,
+
     };
 
     console.log(payload);

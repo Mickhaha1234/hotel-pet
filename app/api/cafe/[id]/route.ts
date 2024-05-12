@@ -59,6 +59,8 @@ export async function GET(req: NextRequest, { params }: { params: { id: string}}
       id: cafe.cafeId,
       title: cafe.title,
       location: cafe.location,
+      videoLink:cafe. videoLink,
+      address:cafe.address,
     
      
       
