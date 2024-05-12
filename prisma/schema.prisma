@@ -87,35 +87,99 @@ model Hotels {
   categoryId Int?
   features   String?
 }
+// model Restaurant {
+//   restaurantId     Int      @id @default(autoincrement())
+//   price       Decimal? @db.Decimal(65, 2)
+//   description String?
+//   image       String?
+//   email       String?
+//   website     String?
+//   parking     Int?
+//   title       String?
+//   Phone       String?
+//   location    String?
+//   address     String?
+//   videoLink   String?
+//   features   String?
+
+// }
 model Restaurant {
   restaurantId     Int      @id @default(autoincrement())
+ title       String?
   price       Decimal? @db.Decimal(65, 2)
   description String?
+  tagLine     String?
+  tag         String?
+  beds        Int?
+  bathRooms   Int?
+  garages     Int?
+  person      Int?
+  area        Decimal? @db.Decimal(65, 2)
+  propertyId  Int?
+  type        String?
+  bedRooms    Int?
+  parking     Int?
+  dimensions  String?
+  yearBuild   Int?
   image       String?
+  videoLink   String?
+  address     String?
+  zipCode     String?
+  Phone       String?
+  fax         String?
   email       String?
   website     String?
-  parking     Int?
-  title       String?
-  Phone       String?
   location    String?
-  address     String?
-  videoLink   String?
+
+  categoryId Int?
   features   String?
 
 }
+// model Cafe {
+//   cafeId     Int      @id @default(autoincrement())
+//   price       Decimal? @db.Decimal(65, 2)
+//   description String?
+//   image       String?
+//   email       String?
+//   website     String?
+//   parking     Int?
+//   title       String?
+//   address     String?
+//   videoLink   String?
+//   Phone       String?
+//   location    String?
+//   features   String?
+
+// }
 model Cafe {
-  cafeId     Int      @id @default(autoincrement())
+    cafeId     Int      @id @default(autoincrement())
+    title       String?
   price       Decimal? @db.Decimal(65, 2)
   description String?
+  tagLine     String?
+  tag         String?
+  beds        Int?
+  bathRooms   Int?
+  garages     Int?
+  person      Int?
+  area        Decimal? @db.Decimal(65, 2)
+  propertyId  Int?
+  type        String?
+  bedRooms    Int?
+  parking     Int?
+  dimensions  String?
+  yearBuild   Int?
   image       String?
+  videoLink   String?
+  address     String?
+  zipCode     String?
+  Phone       String?
+  fax         String?
   email       String?
   website     String?
-  parking     Int?
-  title       String?
-  address     String?
-  videoLink   String?
-  Phone       String?
   location    String?
+
+  categoryId Int?
   features   String?
 
 }

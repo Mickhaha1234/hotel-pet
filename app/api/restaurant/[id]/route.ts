@@ -20,6 +20,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string}}
       location: restaurant.location,
       address: restaurant.address,
       videoLink: restaurant.videoLink,
+      features:restaurant.features,
     
      
       
@@ -90,6 +91,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string}}
     );
  }
 }
+
 export async function DELETE(req: NextRequest, { params }: { params: { id: string}}) {
   const id = params.id;
  

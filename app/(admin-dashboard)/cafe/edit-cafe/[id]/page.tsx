@@ -11,7 +11,7 @@ import Footer from "@/components/vendor-dashboard/Vendor.Footer";
 import CustomRangeSlider from "@/components/RangeSlider";
 import Accordion from "@/components/Accordion";
 import SelectUI from "@/components/SelectUI";
-// import { propertyAmenities } from "@/public/data/addpropertyAmenities";
+import { propertyAmenities } from "@/public/data/addpropertyAmenities";
 import CheckboxCustom from "@/components/Checkbox";
 import input from "postcss/lib/input";
 import toast, { Toaster } from "react-hot-toast";
@@ -24,7 +24,6 @@ import { useRouter } from "next/navigation";
 // };
 
 const Page = ({ params }: { params: { id: string } }) => {
-  
   const router = useRouter();
   const optionCategory = [
     { name: "Hotel", id: 1 },
@@ -69,55 +68,55 @@ const Page = ({ params }: { params: { id: string } }) => {
   const [yearBuild, setyearBuild] = useState("");
   const [videoLink, setvideoLink] = useState("");
   const [address, setaddress] = useState("");
-  // const [amenities, setamenities] = useState([]);
+  const [amenities, setamenities] = useState([]);
   const [zipCode, setzipCode] = useState("");
   const [Phone, setPhone] = useState("");
   const [fax, setfax] = useState("");
   const [email, setemail] = useState("");
   const [website, setwebsite] = useState("");
   const [image, setimage] = useState("");
-  const [ features, setfeatures] = useState("");
- 
+  const [features, setfeatures] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    // const amenitiesString =
-    //   amenities.length > 0 ? `[${amenities.join(", ")}]` : "";
+    const amenitiesString =
+    Array.isArray(amenities) && amenities.length > 0? `[${amenities.join(", ")}]` : "";
 
-    const payload  = {
+    const payload = {
       title: title,
       price: Number(price),
       description: description,
-      
+      tagLine: tagLine,
+      tag: selectedtag.name,
+      beds: Number(selectedbeds.name),
+      bathRooms: Number(selectedbathRooms.name),
+      garages: Number(selectedgarages.name),
+      person: Number(selectedperson.name),
       area: Number(area),
-    
-      
+      propertyId: Number(propertyId),
+      type: type,
+      bedRooms: Number(bedRooms),
       parking: Number(parking),
-      
+      dimensions: dimensions,
+      yearBuild: Number(yearBuild),
       image: image,
       videoLink: videoLink,
       address: address,
-      //  features: amenitiesString,
+      //features: amenitiesString,
       zipCode: zipCode,
       Phone: Phone,
       fax: fax,
       email: email,
       website: website,
       categoryId: selected.id,
-      // "features": "[Gym, WiFi, Internet]"
-      //  features: features,
-    
+      // features: features,
+      "features": "[Gym, WiFi, Internet]",
        
       
 
      
-      // selectedTag: selectedtag.name,
-      // selectedBeds: Number(selectedbeds.name),
-      // selectedBathRooms: Number(selectedbathRooms.name),
-      // selectedGarages: Number(selectedgarages.name),
-      // selectedPerson: Number(selectedperson.name),
-     
+
       
       
       
@@ -156,10 +155,8 @@ const Page = ({ params }: { params: { id: string } }) => {
        
        
     // };
-     
-    console.log(payload);
-    // console.log(payload1);
 
+    console.log(payload);
 
     try {
       const response = await fetch(`/api/cafe/${params.id}`, {
@@ -176,52 +173,64 @@ const Page = ({ params }: { params: { id: string } }) => {
 
     
       toast.success("Update completed");
-      router.push('/cafe/all-cafe')
+      router.push('/resterong/all-resterong')
     } catch (error) {
-      toast.error("Can't Update cafe");
+      toast.error("Can't Update Hotel");
     }
 
   };
 
-  // const handleAmenitiesChange = (e: any, item: any) => {
-  //   const checked = e.target.checked;
-  //   setamenities((prevAmenities: any) => {
-  //     if (checked) {
-  //       // If the checkbox is checked, add the item to the array
-  //       return [...prevAmenities, item];
-  //     } else {
-  //       // If the checkbox is unchecked, remove the item from the array
-  //       return prevAmenities.filter((amenity: any) => amenity !== item);
-  //     }
-  //   });
-  // };
-  
+  const handleAmenitiesChange = (e: any, item: any) => {
+    const checked = e.target.checked;
+    setamenities((prevAmenities: any) => {
+      if (Array.isArray(prevAmenities)) {
+        if (checked) {
+          // If the checkbox is checked, add the item to the array
+          return [...prevAmenities, item];
+        } else {
+          // If the checkbox is unchecked, remove the item from the array
+          return prevAmenities.filter((amenity: any) => amenity!== item);
+        }
+      } else {
+        // Handle the case where prevAmenities is not an array
+        // You might want to return the original value or an empty array
+        return prevAmenities;
+      }
+    });
+  };
 
   useEffect(() => {
     const fetchHotelById = async () => {
       try {
         const response = await fetch(`/api/cafe/${params.id}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch cafe");
+          throw new Error("Failed to fetch restaurant");
         }
         let data = await response.json();
         data=data.data[0]
         console.log(data);
         // Assuming the response structure matches your payload structure
         // Update your state with the fetched data
-        
+        setSelected({ name: data.type, id: data.categoryId });
+        setSelectedtag({ name: data.tag });
+        setSelectedbeds({ name: data.beds });
+        setSelectedbathRooms({ name: data.bath });
+        setSelectedgarages({ name: data.garages });
+        setSelectedperson({ name: data.person });
         settitle(data.title);
         setprice(data.price);
         setdescription(data.description);
-        
+        settagLine(data.tagLine);
         setarea(data.area);
-       
-        
+        setpropertyId(data.propertyId);
+        settype(data.type);
+        setbedRooms(data.bedRooms);
         setparking(data.parking);
-        
+        setdimensions(data.dimensions);
+        setyearBuild(data.yearBuild);
         setvideoLink(data.videoLink);
         setaddress(data.address);
-      //  setamenities(data.features  );
+        setamenities(data.features  );
         setzipCode(data.zipCode);
         setPhone(data.Phone);
         setfax(data.fax);
@@ -229,8 +238,8 @@ const Page = ({ params }: { params: { id: string } }) => {
         setwebsite(data.website);
         setimage(data.img[0]);
       } catch (error) {
-        console.error("Failed to fetch cafe:", error);
-        toast.error("Failed to fetch cafe");
+        console.error("Failed to fetch hotel:", error);
+        toast.error("Failed to fetch hotel");
       }
     };
 
@@ -269,14 +278,14 @@ const Page = ({ params }: { params: { id: string } }) => {
           >
             <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-b-2xl">
               <div className="border-t pt-4">
-                {/* <p className="mb-4 text-xl font-medium">
-                  Choose Listing Category :
-                </p>
+                 {/* <p className="mb-4 text-xl font-medium"> 
+                   Choose Listing Category : 
+                 </p>
                 <SelectUI
                   options={optionCategory}
                   selected={selected}
                   setSelected={setSelected}
-                /> */}
+                />  */}
                 <p className="mt-6 mb-4 text-xl font-medium">ชื่อ:</p>
                 <input
                   type="text"
@@ -319,7 +328,7 @@ const Page = ({ params }: { params: { id: string } }) => {
               </div>
             </div>
           </Accordion>
-         
+          
         </div>
         <div className="col-span-12 lg:col-span-6">
           <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8">
@@ -373,8 +382,8 @@ const Page = ({ params }: { params: { id: string } }) => {
               </div>
             </Accordion>
           </div>
-          {/* <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6">
-            <Accordion
+          {/* <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6"> 
+             <Accordion
               buttonContent={(open) => (
                 <div className="rounded-2xl flex items-center justify-between">
                   <h3 className="h3">Amenities</h3>
@@ -400,8 +409,8 @@ const Page = ({ params }: { params: { id: string } }) => {
                   ))}
                 </ul>
               </div>
-            </Accordion>
-          </div> */}
+            </Accordion> 
+            </div> */}
           <div className="rounded-2xl bg-white border p-4 md:p-6 lg:p-8 mt-4 lg:mt-6">
             <Accordion
               buttonContent={(open) => (
@@ -493,5 +502,4 @@ const Page = ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default Page;
-
+export default Page

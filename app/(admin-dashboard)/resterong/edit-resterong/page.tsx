@@ -17,7 +17,7 @@ const Page = () => {
   return (
     <div className="bg-[var(--bg-2)]">
       <div className="flex items-center justify-between flex-wrap px-3 py-5 md:p-[30px] gap-5 lg:p-[60px] bg-[var(--dark)]">
-        <h2 className="h2 text-white">Add New res</h2>
+        <h2 className="h2 text-white">Add New Hotel</h2>
         <Link href="/add-property" className="btn-primary">
           <PlusCircleIcon className="w-5 h-5" /> Add New Listing
         </Link>
@@ -31,7 +31,7 @@ const Page = () => {
                 className={`${
                   open ? "rounded-t-2xl" : "rounded-2xl"
                 } flex justify-between items-center p-4 md:p-6 lg:p-8 duration-500 bg-white`}>
-                <h3 className="h3">res Content </h3>
+                <h3 className="h3">Hotel Content </h3>
                 <ChevronDownIcon
                   className={`w-5 h-5 sm:w-6 sm:h-6 duration-300 ${
                     open ? "rotate-180" : ""
@@ -42,7 +42,16 @@ const Page = () => {
             initialOpen={true}>
             <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 bg-white rounded-b-2xl">
               <div className="border-t pt-4">
-                
+                <p className="mb-4 text-xl font-medium">
+                  Choose Listing Category :
+                </p>
+                <SelectUI
+                  options={[
+                    { name: "Hotel" },
+                    { name: "Cab" },
+                    { name: "Motel" },
+                  ]}
+                />
                 <p className="mt-6 mb-4 text-xl font-medium">Title:</p>
                 <input
                   type="text"
