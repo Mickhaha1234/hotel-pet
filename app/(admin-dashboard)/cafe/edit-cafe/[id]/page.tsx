@@ -175,7 +175,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       toast.success("Update completed");
       router.push('/resterong/all-resterong')
     } catch (error) {
-      toast.error("Can't Update Hotel");
+      toast.error("Can't Update cafe");
     }
 
   };
@@ -204,7 +204,7 @@ const Page = ({ params }: { params: { id: string } }) => {
       try {
         const response = await fetch(`/api/cafe/${params.id}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch restaurant");
+          throw new Error("Failed to fetch cafe");
         }
         let data = await response.json();
         data=data.data[0]
@@ -238,8 +238,8 @@ const Page = ({ params }: { params: { id: string } }) => {
         setwebsite(data.website);
         setimage(data.img[0]);
       } catch (error) {
-        console.error("Failed to fetch hotel:", error);
-        toast.error("Failed to fetch hotel");
+        console.error("Failed to fetch cafe:", error);
+        toast.error("Failed to fetch cafe");
       }
     };
 
