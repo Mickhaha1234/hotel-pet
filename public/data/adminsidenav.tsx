@@ -14,11 +14,11 @@ export const sidenavData = [
   },
   {
     id: 2,
-    name: "Resterong",
+    name: "Restauran",
     icon: <i className="las la-concierge-bell text-2xl"></i>, 
     submenus: [
-      { url: "/resterong/add-resterong", title: "Add New Resterong" },
-      { url: "/resterong/all-resterong", title: "All Resterong " },
+      { url: "/resterong/add-resterong", title: "Add New Restaurant" },
+      { url: "/resterong/all-resterong", title: "All Restaurant " },
       // { url: "/tour/add-new-tour", title: "Add New Resterong" },
       // { url: "/tour/categories", title: "Categories" },
       // { url: "/tour/attributes", title: "Attributes" },

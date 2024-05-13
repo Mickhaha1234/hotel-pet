@@ -17,17 +17,13 @@ import input from "postcss/lib/input";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-// const handleChange = (event: { target: { name: any; value: any } }) => {
-//   const name = event.target.name;
-//   const value = event.target.value;
-//   setInputs((values: any) => ({ ...values, [name]: value }));
-// };
+
 
 const Page = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
   const optionCategory = [
     { name: "Hotel", id: 1 },
-    // { name: "Cab", id: 2 },
+  
     { name: "Motel", id: 2 },
   ];
   const optionTag = [{ name: "One" }, { name: "Two" }, { name: "Three" }];
@@ -45,7 +41,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     { name: "8" },
   ];
 
-  // form data
+
   const [selected, setSelected] = useState(optionCategory[0]);
   const [selectedtag, setSelectedtag] = useState(optionTag[0]);
   const [selectedbeds, setSelectedbeds] = useState(optionBeds[0]);
@@ -185,15 +181,14 @@ const Page = ({ params }: { params: { id: string } }) => {
     setamenities((prevAmenities: any) => {
       if (Array.isArray(prevAmenities)) {
         if (checked) {
-          // If the checkbox is checked, add the item to the array
+
           return [...prevAmenities, item];
         } else {
-          // If the checkbox is unchecked, remove the item from the array
+          
           return prevAmenities.filter((amenity: any) => amenity!== item);
         }
       } else {
-        // Handle the case where prevAmenities is not an array
-        // You might want to return the original value or an empty array
+    
         return prevAmenities;
       }
     });
@@ -209,8 +204,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         let data = await response.json();
         data=data.data[0]
         console.log(data);
-        // Assuming the response structure matches your payload structure
-        // Update your state with the fetched data
+       
         setSelected({ name: data.type, id: data.categoryId });
         setSelectedtag({ name: data.tag });
         setSelectedbeds({ name: data.beds });
